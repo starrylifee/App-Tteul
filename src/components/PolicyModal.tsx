@@ -116,10 +116,10 @@ function PrivacyContent() {
             <h3 className="text-lg font-bold text-primary-700 mt-6 mb-3">제8조 (개인정보 보호책임자)</h3>
             <p>본 서비스는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
             <ul className="list-disc pl-5 space-y-1 mt-2">
-                <li>성명: 정용석 (개발자)</li>
+                <li>성명: 정용석</li>
                 <li>소속: 서울신답초등학교</li>
                 <li>직위: 교사</li>
-                <li>연락처: ssamcoder@gmail.com (이메일)</li>
+                <li>연락처: ssamcoder@gmail.com</li>
             </ul>
 
             <h3 className="text-lg font-bold text-primary-700 mt-6 mb-3">제9조 (개인정보 처리방침 변경)</h3>

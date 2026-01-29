@@ -57,10 +57,10 @@ export default function Footer({ onPrivacyClick, onTermsClick }: FooterProps) {
                             <li className="flex items-center gap-2">
                                 <span>📧</span>
                                 <a
-                                    href="mailto:forinnocen@sen.go.kr"
+                                    href="mailto:ssamcoder@gmail.com"
                                     className="hover:text-white transition-colors"
                                 >
-                                    forinnocen@sen.go.kr
+                                    ssamcoder@gmail.com
                                 </a>
                             </li>
                             <li className="flex items-center gap-2">
