@@ -53,6 +53,16 @@ const dummyApps: AppData[] = [
     notice: "위험한 주변 환경으로 인해 학생들의 직접 설문조사가 어려운 상황에서 안전하게 활용할 수 있습니다.",
   },
   {
+    id: 104,
+    title: "키다리 체커",
+    description: "키다리샘 지도일지와 일일근무상황, 출장 리스트를 비교해서 복무상 이상이 없는지 체크하는 기초학력 업무자 전용 웹앱입니다.",
+    thumbnail: "/kidari_checker_thumbnail.png",
+    url: "https://kidari-checker.vercel.app/",
+    category: "학급운영",
+    tags: ["기초학력", "복무관리", "업무효율", "키다리샘"],
+    target: "교사 업무용",
+  },
+  {
     id: 2,
     title: "우리반 칭찬 나무",
     description: "친구들에게 칭찬 잎사귀를 달아주세요. 함께 자라는 칭찬 나무를 만들어요!",

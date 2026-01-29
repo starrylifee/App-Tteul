@@ -82,8 +82,8 @@ function PrivacyContent() {
             <h3 className="text-lg font-bold text-primary-700 mt-6 mb-3">제2조 (개인정보의 처리 및 보유기간)</h3>
             <p>① 본 서비스는 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용기간 내에서 개인정보를 처리·보유합니다.</p>
             <ol className="list-decimal pl-5 space-y-1">
-                <li>보유 기간: 해당 학년도 종료 시(익년 2월 말) 또는 학생의 졸업/진급 시까지</li>
-                <li>파기 시점: 보유 기간 종료 후 지체 없이(5일 이내) 파기</li>
+                <li>보유 기간: 수집일로부터 5년 (수업 연구 및 교육과정 개선 목적)</li>
+                <li>파기 시점: 보유 기간(5년) 종료 후 지체 없이(5일 이내) 파기</li>
             </ol>
 
             <h3 className="text-lg font-bold text-primary-700 mt-6 mb-3">제3조 (처리하는 개인정보 항목)</h3>
