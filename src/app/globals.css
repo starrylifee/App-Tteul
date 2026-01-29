@@ -1,8 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAFAF5;
+  --foreground: #2D3748;
+
+  /* Garden Theme Colors */
+  --primary-50: #F1F8E9;
+  --primary-100: #DCEDC8;
+  --primary-200: #C5E1A5;
+  --primary-300: #AED581;
+  --primary-400: #9CCC65;
+  --primary-500: #7CB342;
+  --primary-600: #689F38;
+  --primary-700: #558B2F;
+
+  --secondary-50: #E8F5E9;
+  --secondary-100: #C8E6C9;
+  --secondary-200: #A5D6A7;
+  --secondary-300: #81C784;
+  --secondary-400: #66BB6A;
+  --secondary-500: #4CAF50;
+
+  --accent-50: #FFFDE7;
+  --accent-100: #FFF9C4;
+  --accent-200: #FFF59D;
+  --accent-300: #FFF176;
+  --accent-400: #FFEE58;
+  --accent-500: #FFCA28;
+  --accent-600: #FFB300;
+
+  --warm-50: #EFEBE9;
+  --warm-100: #D7CCC8;
+  --warm-200: #BCAAA4;
+  --warm-300: #A1887F;
 }
 
 @theme inline {
@@ -10,17 +40,110 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Custom colors */
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+
+  --color-secondary-50: var(--secondary-50);
+  --color-secondary-100: var(--secondary-100);
+  --color-secondary-200: var(--secondary-200);
+  --color-secondary-300: var(--secondary-300);
+  --color-secondary-400: var(--secondary-400);
+  --color-secondary-500: var(--secondary-500);
+
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+
+  --color-warm-50: var(--warm-50);
+  --color-warm-100: var(--warm-100);
+  --color-warm-200: var(--warm-200);
+  --color-warm-300: var(--warm-300);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', sans-serif;
+}
+
+/* Card hover animation */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(124, 179, 66, 0.15);
+}
+
+/* Gradient backgrounds */
+.gradient-hero {
+  background: linear-gradient(135deg, var(--primary-50) 0%, var(--accent-50) 50%, var(--warm-50) 100%);
+}
+
+/* Tag styles */
+.tag-교과 {
+  background-color: var(--primary-100);
+  color: var(--primary-700);
+}
+
+.tag-학급운영 {
+  background-color: var(--accent-100);
+  color: var(--accent-600);
+}
+
+.tag-창체 {
+  background-color: var(--secondary-100);
+  color: var(--secondary-500);
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* Decorative elements */
+.leaf-decoration::before {
+  content: '🌱';
+  margin-right: 8px;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Filter button active state */
+.filter-active {
+  background-color: var(--primary-500);
+  color: white;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
