@@ -119,7 +119,7 @@ function PrivacyContent() {
                 <li>성명: 정용석</li>
                 <li>소속: 서울신답초등학교</li>
                 <li>직위: 교사</li>
-                <li>연락처: ssamcoder@gmail.com</li>
+                <li>연락처: forinnocen@sen.go.kr</li>
             </ul>
 
             <h3 className="text-lg font-bold text-primary-700 mt-6 mb-3">제9조 (개인정보 처리방침 변경)</h3>
