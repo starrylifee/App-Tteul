@@ -122,7 +122,7 @@ function PrivacyContent() {
             <p>본 서비스는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
             <ul className="list-disc pl-5 space-y-1 mt-2">
                 <li>성명: 정용석</li>
-                <li>소속: 서울신답초등학교</li>
+                <li>소속: 서울특별시교육청</li>
                 <li>직위: 교사</li>
                 <li>연락처: forinnocen@sen.go.kr</li>
             </ul>
