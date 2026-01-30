@@ -90,7 +90,7 @@ function PrivacyContent() {
             <h3 className="text-lg font-bold text-primary-700 mt-6 mb-3">제3조 (처리하는 개인정보 항목)</h3>
             <p>본 서비스는 학습 지원을 위해 필요한 최소한의 개인정보만을 수집합니다.</p>
             <ol className="list-decimal pl-5 space-y-1">
-                <li>수집 항목: 아이디, 비밀번호, 이름(또는 닉네임), 학년, 반, 번호</li>
+                <li>수집 항목: 아이디, 비밀번호, 이름(또는 닉네임), 학년, 반, 번호, 학습 결과물, 평가 데이터, 연구 데이터</li>
                 <li>수집하지 않는 항목: 주민등록번호, 주소, 전화번호, 이메일 등 불필요한 민감 정보</li>
             </ol>
 
