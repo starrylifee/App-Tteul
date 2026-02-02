@@ -92,6 +92,16 @@ const dummyApps: AppData[] = [
     tags: ["연구교사제", "미술감상", "AI", "연구공유"],
     target: "전학년",
   },
+  {
+    id: 108,
+    title: "음악과 수학 (분수 리듬 게임)",
+    description: "수학의 분수 개념을 리듬 게임으로 쉽고 재미있게 배워보세요. 자유 작곡 모드와 퀴즈 도전 모드를 통해 박자와 분수의 관계를 익힐 수 있습니다.",
+    thumbnail: "/music_math_thumbnail.png",
+    url: "https://musicandmath.vercel.app/",
+    category: "교과",
+    tags: ["수학", "음악", "분수", "리듬게임", "에듀테크"],
+    target: "전학년",
+  },
 ];
 
 export default function Home() {
