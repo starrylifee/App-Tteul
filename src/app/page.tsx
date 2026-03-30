@@ -177,6 +177,16 @@ const apps: AppData[] = [
     category: "창체",
     tags: ["디지털 시민성", "정보", "발자국", "활동"],
   },
+  {
+    id: 209,
+    title: "북타이머",
+    description:
+      "아침 독서 시간을 학생 번호 터치로 기록하고, 공지·시간표·성공 현황까지 한 화면에서 운영할 수 있는 독서 루틴 보드입니다.",
+    thumbnail: "/book_timer_thumbnail.png",
+    url: "https://book-timer-wine.vercel.app/",
+    category: "학급운영",
+    tags: ["독서", "아침활동", "타이머", "미션보드"],
+  },
 ];
 
 export default function Home() {
