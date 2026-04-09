@@ -187,6 +187,26 @@ const apps: AppData[] = [
     category: "학급운영",
     tags: ["독서", "아침활동", "타이머", "미션보드"],
   },
+  {
+    id: 210,
+    title: "거북이 학교 보물찾기",
+    description:
+      "학교 곳곳에 숨겨진 보물을 거북이와 함께 찾아가는 창의적 체험 활동 앱입니다.",
+    thumbnail: "/tuttle.png",
+    url: "https://tuttle-run.vercel.app/",
+    category: "창체",
+    tags: ["보물찾기", "거북이", "학교활동", "체험"],
+  },
+  {
+    id: 211,
+    title: "STEAM 각도 놀이터",
+    description:
+      "4학년 각도 단원을 여러 가지 미니 게임으로 재미있게 복습하고 원리를 익히는 수학 놀이터입니다.",
+    thumbnail: "/angle.png",
+    url: "https://steam-angle.vercel.app/",
+    category: "교과",
+    tags: ["수학", "각도", "STEAM", "게임"],
+  },
 ];
 
 export default function Home() {
