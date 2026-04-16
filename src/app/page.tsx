@@ -217,6 +217,16 @@ const apps: AppData[] = [
     category: "창체",
     tags: ["그라운드카드", "미니게임", "포인트", "플랫폼"],
   },
+  {
+    id: 213,
+    title: "바이브신답",
+    description:
+      "서울신답초등학교 교원학습공동체 바이브특공대의 결과물입니다.",
+    thumbnail: "/vibe_shindap_thumbnail.png",
+    url: "https://padlet.com/shindapcho/padlet-zssgcqkrclm4kd3m",
+    category: "창체",
+    tags: ["바이브특공대", "교원학습공동체", "결과물", "패들렛"],
+  },
 ];
 
 export default function Home() {
