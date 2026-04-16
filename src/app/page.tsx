@@ -207,6 +207,16 @@ const apps: AppData[] = [
     category: "교과",
     tags: ["수학", "각도", "STEAM", "게임"],
   },
+  {
+    id: 212,
+    title: "그라운드 미니게임",
+    description:
+      "학생들이 미니게임을 완료하면 그라운드카드 포인트가 자동 지급되는 교육용 게임 플랫폼입니다.",
+    thumbnail: "/grownd_minigame_thumbnail.png",
+    url: "https://grownd-minigame.vercel.app/",
+    category: "창체",
+    tags: ["그라운드카드", "미니게임", "포인트", "플랫폼"],
+  },
 ];
 
 export default function Home() {
