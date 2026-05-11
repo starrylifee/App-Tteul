@@ -227,6 +227,36 @@ const apps: AppData[] = [
     category: "창체",
     tags: ["바이브특공대", "교원학습공동체", "결과물", "패들렛"],
   },
+  {
+    id: 214,
+    title: "센서 바이브 - EZMaker",
+    description:
+      "다양한 센서를 활용한 게임을 만들고 체험하는 EZMaker 기반 메이커 교육 플랫폼입니다.",
+    thumbnail: "/sensor_vibe_thumbnail.png",
+    url: "https://sensor-vibe.vercel.app/",
+    category: "창체",
+    tags: ["센서", "메이커", "EZMaker", "게임"],
+  },
+  {
+    id: 215,
+    title: "메타인지 유니콘 이미지 생성",
+    description:
+      "메타인지 유니콘에서 만든 감상 프롬프트로 AI 이미지를 재창작하는 개성적 표현 활동 앱입니다.",
+    thumbnail: "/metacog_imagegen_thumbnail.png",
+    url: "https://metacog-unicorn-imagegen.vercel.app/",
+    category: "교과",
+    tags: ["미술", "AI 이미지", "메타인지", "재창작"],
+  },
+  {
+    id: 216,
+    title: "오늘 배움봇",
+    description:
+      "국어·수학·사회 오늘 배운 내용을 AI 챗봇과 함께 점검하는 메타인지 학습 도구입니다.",
+    thumbnail: "/today_learning_bot_thumbnail.png",
+    url: "https://20260424-metacog-2-shindayun.vercel.app/",
+    category: "학급운영",
+    tags: ["챗봇", "메타인지", "오늘배움", "점검"],
+  },
 ];
 
 export default function Home() {
