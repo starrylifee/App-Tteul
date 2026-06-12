@@ -267,6 +267,16 @@ const apps: AppData[] = [
     category: "교과",
     tags: ["수학", "도형", "평행이동", "STEAM", "게임"],
   },
+  {
+    id: 218,
+    title: "막대그래프 STEAM 게임",
+    description:
+      "학생들이 직접 설계한 5가지 막대그래프 게임을 플레이하며 그래프 그리기와 자료 해석을 익히는 STEAM 놀이터입니다.",
+    thumbnail: "/steam_graph.png",
+    url: "https://steam-graph.vercel.app/",
+    category: "교과",
+    tags: ["수학", "막대그래프", "자료해석", "STEAM", "게임"],
+  },
 ];
 
 export default function Home() {
