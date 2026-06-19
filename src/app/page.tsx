@@ -287,6 +287,16 @@ const apps: AppData[] = [
     category: "창체",
     tags: ["지도", "탐험", "학교", "어린이"],
   },
+  {
+    id: 220,
+    title: "수학 도형 밀기 게임",
+    description:
+      "4학년 1반 학생들이 직접 만든 도형 밀기(평행이동) 수학 게임을 플레이하며 개념을 익히는 STEAM 놀이터입니다.",
+    thumbnail: "/4-1push.png",
+    url: "https://steam-4-1-push.vercel.app/",
+    category: "교과",
+    tags: ["수학", "도형", "평행이동", "STEAM", "게임"],
+  },
 ];
 
 export default function Home() {
