@@ -277,6 +277,16 @@ const apps: AppData[] = [
     category: "교과",
     tags: ["수학", "막대그래프", "자료해석", "STEAM", "게임"],
   },
+  {
+    id: 219,
+    title: "신답 키즈 맵",
+    description:
+      "로봇 과학실·운동장·숲속 캠핑장 등 학교 곳곳을 탐험 코스로 둘러보는 어린이 지도 앱입니다.",
+    thumbnail: "/shindapkidsmap.png",
+    url: "https://shindapkidsmap.vercel.app/",
+    category: "창체",
+    tags: ["지도", "탐험", "학교", "어린이"],
+  },
 ];
 
 export default function Home() {
