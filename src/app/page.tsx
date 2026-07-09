@@ -6,7 +6,10 @@ import Hero from "@/components/Hero";
 import AppGallery from "@/components/AppGallery";
 import Footer from "@/components/Footer";
 import PolicyModal from "@/components/PolicyModal";
+import VibeShindap, { VibeItem } from "@/components/VibeShindap";
 import { AppData } from "@/components/AppCard";
+
+type TabType = "official" | "vibe";
 
 const apps: AppData[] = [
   {
@@ -297,10 +300,452 @@ const apps: AppData[] = [
     category: "교과",
     tags: ["수학", "도형", "평행이동", "STEAM", "게임"],
   },
+  {
+    id: 221,
+    title: "운동 미션 · NFC 체육 게임",
+    description:
+      "NFC 태그를 활용해 운동 미션을 수행하는 체육 활동 게임입니다.",
+    thumbnail: "",
+    url: "https://nfc-exercise-games.vercel.app/",
+    category: "교과",
+    tags: ["체육", "NFC", "운동", "미션"],
+  },
+  {
+    id: 222,
+    title: "수학 규칙 아케이드",
+    description:
+      "수학 규칙 찾기를 아케이드 게임 형식으로 즐기는 STEAM 학습 도구입니다.",
+    thumbnail: "",
+    url: "https://steam-rules.vercel.app/",
+    category: "교과",
+    tags: ["수학", "규칙", "STEAM", "아케이드"],
+  },
+  {
+    id: 223,
+    title: "신답룰렛",
+    description:
+      "구슬 레이스로 추첨하는 뽑기판으로, 당첨 뽑기부터 모둠·자리 배치까지 한 번에 가능합니다.",
+    thumbnail: "",
+    url: "https://shindap-rullet.vercel.app/",
+    category: "학급운영",
+    tags: ["룰렛", "뽑기", "모둠", "자리배치"],
+  },
+  {
+    id: 224,
+    title: "서울교육룰렛",
+    description:
+      "서울시교육청 버전 구슬 레이스 뽑기판으로, 추첨·모둠·자리 배치를 지원합니다.",
+    thumbnail: "",
+    url: "https://seoul-edu-rullet.vercel.app/",
+    category: "학급운영",
+    tags: ["룰렛", "뽑기", "서울교육청", "자리배치"],
+  },
+  {
+    id: 225,
+    title: "에듀앱 빌더",
+    description:
+      "학생 기획서로 AI가 웹앱을 만들어주는 교육 플랫폼입니다.",
+    thumbnail: "",
+    url: "https://mycl-contest.vercel.app/",
+    category: "창체",
+    tags: ["AI", "웹앱", "기획서", "메이커"],
+  },
+];
+
+// ========== 바이브 신답 습작 목록 ==========
+// 새 습작을 추가하려면 아래 배열에 항목을 추가하세요.
+// ※ 패들릿 업로드 HTML 파일 4개(자음자 모음자 찾아 글자 만들기 파일, 받침이 있는 글자 알기,
+//    손가락으로 수만큼 나타내기, 사물과 숫자 대응하기)는 임시 만료 토큰 URL이라 생략됨.
+const vibeItems: VibeItem[] = [
+  {
+    id: 1,
+    title: "(샘플) 손병호 게임",
+    url: "https://gemini.google.com/share/5fab4acf1078",
+    description: "",
+  },
+  {
+    id: 2,
+    title: "우리반 독서기록",
+    url: "https://gemini.google.com/share/a1ba032d47a5",
+    description: "댓글 링크: https://20260601-reading.vercel.app/",
+  },
+  {
+    id: 3,
+    title: "북타이머",
+    url: "https://book-timer-wine.vercel.app/",
+    description: "아침 독서 미션 보드",
+  },
+  {
+    id: 4,
+    title: "(샘플) 삼행시 AI - text gen",
+    url: "https://gemini.google.com/share/95bda7d57ab2",
+    description: "",
+  },
+  {
+    id: 5,
+    title: "(샘플) 패션쇼 AI - image gen",
+    url: "https://gemini.google.com/share/7c9f84699de3",
+    description: "",
+  },
+  {
+    id: 6,
+    title: "(샘플) 그림맞추기 - vision",
+    url: "https://gemini.google.com/share/f5b70ecb992b",
+    description: "",
+  },
+  {
+    id: 7,
+    title: "2학년 '자연' - 자연은 디자이너: 자연에서 찾은 무늬로 옷 만들기",
+    url: "https://gemini.google.com/share/c8109a9ea5b0",
+    description: "댓글 링크: https://padlet.com/shindapt/padlet-kjabx1lfeo1croob",
+  },
+  {
+    id: 8,
+    title: "우리나라 상징 캐릭터 만들기",
+    url: "https://gemini.google.com/share/5f26f8442214",
+    description: "",
+  },
+  {
+    id: 9,
+    title: "한복 디자인하기",
+    url: "https://gemini.google.com/share/e35809eca294",
+    description: "댓글 링크: https://gemini.google.com/share/6d18af85589a",
+  },
+  {
+    id: 10,
+    title: "AI 나 전달법 마음 번역기",
+    url: "https://gemini.google.com/share/1a693d653091",
+    description: "",
+  },
+  {
+    id: 11,
+    title: "4학년 과학-자석을 이용한 장치 설계하기",
+    url: "https://gemini.google.com/share/3c1b99583c08",
+    description: "",
+  },
+  {
+    id: 12,
+    title: "AI 문해력 학습",
+    url: "https://gemini.google.com/share/b41d183c7262",
+    description: "",
+  },
+  {
+    id: 13,
+    title: "4학년 미술 - 찰흙으로 상상의 성 만들기",
+    url: "https://gemini.google.com/share/c425639fe049",
+    description: "",
+  },
+  {
+    id: 14,
+    title: "4학년 미술 - 색점토로 괴물 만들기",
+    url: "https://gemini.google.com/share/d9f3b52f4b15",
+    description: "",
+  },
+  {
+    id: 15,
+    title: "(샘플) Ai 이모티콘 메이커",
+    url: "https://gemini.google.com/share/c3a28bca5877",
+    description: "",
+  },
+  {
+    id: 16,
+    title: "업엔다운게임",
+    url: "https://gemini.google.com/share/71a2e24e62fe",
+    description: "",
+  },
+  {
+    id: 17,
+    title: "봄날의 업앤다운 게임",
+    url: "https://gemini.google.com/share/bbf5c64a8567",
+    description: "",
+  },
+  {
+    id: 18,
+    title: "고양이 미로탈출 게임",
+    url: "https://gemini.google.com/share/e76e748d2e88",
+    description: "",
+  },
+  {
+    id: 19,
+    title: "3학년 나눗셈 도입 연습",
+    url: "https://gemini.google.com/share/8061094db9ee",
+    description: "",
+  },
+  {
+    id: 20,
+    title: "업앤다운 게임",
+    url: "https://gemini.google.com/share/4d825f351161",
+    description: "",
+  },
+  {
+    id: 21,
+    title: "벽돌 깨기 게임",
+    url: "https://gemini.google.com/share/cc68be064b60",
+    description: "",
+  },
+  {
+    id: 22,
+    title: "날씨에 따라 마우스 포인터가 변하는 웹사이트",
+    url: "https://gemini.google.com/share/fa89792574a2",
+    description: "",
+  },
+  {
+    id: 23,
+    title: "기본 글자 쓰기 게임",
+    url: "https://gemini.google.com/share/0be96a57698e",
+    description: "",
+  },
+  {
+    id: 24,
+    title: "알록달록 그림판",
+    url: "https://gemini.google.com/share/67de161d620e",
+    description: "",
+  },
+  {
+    id: 25,
+    title: "스도쿠 게임",
+    url: "https://gemini.google.com/share/d82f290a822b",
+    description: "",
+  },
+  {
+    id: 26,
+    title: "2학년을 위한 구구단 게임",
+    url: "https://gemini.google.com/share/bbf5c64a8567",
+    description: "",
+  },
+  {
+    id: 27,
+    title: "전개도 알아보기",
+    url: "https://gemini.google.com/share/c2f8f2480284",
+    description: "",
+  },
+  {
+    id: 28,
+    title: "칠교놀이 챌린지",
+    url: "https://gemini.google.com/share/31e758305306",
+    description: "",
+  },
+  {
+    id: 29,
+    title: "2학년 세 자리 수 버블게임",
+    url: "https://gemini.google.com/share/78ce9ac09f27",
+    description: "",
+  },
+  {
+    id: 30,
+    title: "종합 숫자게임",
+    url: "https://gemini.google.com/share/08199da1bcaf",
+    description: "",
+  },
+  {
+    id: 31,
+    title: "1부터 100까지 숫자기차",
+    url: "https://gemini.google.com/share/78fba3539195",
+    description: "",
+  },
+  {
+    id: 32,
+    title: "장구 비트 마스터",
+    url: "https://gemini.google.com/share/3798c3e3cf00",
+    description: "",
+  },
+  {
+    id: 33,
+    title: "반응속도 테스트",
+    url: "https://gemini.google.com/share/f8b4d3782636",
+    description: "전자칠판에서 하면 마우스보다 평균 반응속도가 0.1초 정도 느림",
+  },
+  {
+    id: 34,
+    title: "5초 동안 많이 클릭하기",
+    url: "https://gemini.google.com/share/a7c1f3994eaa",
+    description: "전자칠판에서 손가락으로만 눌러야 오류 날 확률이 적음",
+  },
+  {
+    id: 35,
+    title: "자리바꾸기",
+    url: "https://gemini.google.com/share/4c4c34a5ac2b",
+    description: "책상 배치에 따라 자리 수 선택, 수동/랜덤 배치 기능(랜덤은 아직 미사용)",
+  },
+  {
+    id: 36,
+    title: "반응속도 업그레이드",
+    url: "https://gemini.google.com/share/bebda3220582",
+    description: "루피 얼굴은 저작권이 있어서 루피 짤 뺌",
+  },
+  {
+    id: 37,
+    title: "마을 장소 텔레파시 놀이",
+    url: "https://g.co/gemini/share/c550f8444945",
+    description: "",
+  },
+  {
+    id: 38,
+    title: "이민선 바이브 코딩 Padlet",
+    url: "https://padlet.com/msonedu/padlet-7qsikxoczu6pg195",
+    description: "",
+  },
+  {
+    id: 39,
+    title: "나눗셈 릴레이 문제 풀기 게임",
+    url: "https://gemini.google.com/share/6526fd3b2ed7",
+    description: "",
+  },
+  {
+    id: 40,
+    title: "사회 4-1-1 지도로 만나는 우리 지역 단원 정리 초성 퀴즈",
+    url: "https://gemini.google.com/share/c0064500e068",
+    description: "",
+  },
+  {
+    id: 41,
+    title: "동시모음 사이트 (심혜림)",
+    url: "https://sites.google.com/view/dongsi/홈",
+    description: "3학년 1학기 국어 3단원 동시 감상 수업용",
+  },
+  {
+    id: 42,
+    title: "같은 모양 카드 기억하기(1-1-2 수학)",
+    url: "https://gemini.google.com/share/e8db976c660a",
+    description: "",
+  },
+  {
+    id: 43,
+    title: "1-1-통합 우리나라 한식 분류하기",
+    url: "https://gemini.google.com/share/5349fe57a538",
+    description: "",
+  },
+  {
+    id: 44,
+    title: "곱셈과 나눗셈의 관계 연습 (심혜림)",
+    url: "https://sites.google.com/view/devision1/홈",
+    description: "3학년 1학기 3단원 나눗셈 연습 사이트",
+  },
+  {
+    id: 45,
+    title: "방과후-돌봄교실 학생관리 프로그램",
+    url: "https://gemini.google.com/share/b5ebe5364b0f",
+    description: "",
+  },
+  {
+    id: 46,
+    title: "타이머 게임",
+    url: "https://gemini.google.com/share/8d8576f2b39e",
+    description: "날짜에 맞게 타이머를 멈추는 게임(예: 5월 1일→5.01초)",
+  },
+  {
+    id: 47,
+    title: "10이 되는 짝꿍 수 찾기 게임",
+    url: "https://gemini.google.com/share/b9ae5c49eca6",
+    description: "",
+  },
+  {
+    id: 48,
+    title: "님게임",
+    url: "https://gemini.google.com/share/03c83bdef7c8",
+    description: "",
+  },
+  {
+    id: 49,
+    title: "킹방울 10만들기 2인용-> 5인용(세로로 길게)",
+    url: "https://gemini.google.com/share/7d8ac5c8a5cb",
+    description: "킹수학 닷컴 2인용 놀이를 수정",
+  },
+  {
+    id: 50,
+    title: "일정관리앱",
+    url: "https://izzy74.my.canva.site/memo1",
+    description: "밝은 톤의 Tailwind 일정 관리 앱 디자인 사본",
+  },
+  {
+    id: 51,
+    title: "칠교놀이 배틀",
+    url: "https://tangramteacher.netlify.app/",
+    description: "학생용: https://tangramstu.netlify.app/",
+  },
+  {
+    id: 52,
+    title: "1-1-통합 우리나라",
+    url: "https://gemini.google.com/share/480fb4a680f0",
+    description: "우리나라 상징을 활용한 한복 디자인하기",
+  },
+  {
+    id: 53,
+    title: "우리반 독서시간 기록장",
+    url: "https://gemini.google.com/share/d9ae5d12a74a",
+    description: "",
+  },
+  {
+    id: 54,
+    title: "1-1 국어 받침이 다른 낱말을 연결해서 문장 만들기",
+    url: "https://gemini.google.com/share/190defb50a9d",
+    description: "",
+  },
+  {
+    id: 55,
+    title: "6학년 국어(속담사전만들기)",
+    url: "https://gemini.google.com/share/0021ce866033",
+    description: "속담을 적으면 속담 사전에 넣을 그림을 그려줌",
+  },
+  {
+    id: 56,
+    title: "자음자 모음자 찾아 글자 만들기",
+    url: "https://gemini.google.com/share/56cdb044972d",
+    description: "",
+  },
+  {
+    id: 57,
+    title: "독후활동-꾸미는 말 넣기",
+    url: "https://gemini.google.com/share/416298fd8086",
+    description: "",
+  },
+  {
+    id: 58,
+    title: "온책읽기 독서활동 체크리스트",
+    url: "https://gemini.google.com/share/7df66811bbc3",
+    description: "",
+  },
+  {
+    id: 59,
+    title: "2학년 '난 네가 궁금해' 조사 활동지",
+    url: "https://gemini.google.com/share/c4fd29af7d66",
+    description: "동식물 박사님께 질문하면 추가로 답변해줌",
+  },
+  {
+    id: 60,
+    title: "영어 5학년 단어 매칭 게임(레벨있음)",
+    url: "https://gemini.google.com/share/223e39f06152",
+    description: "",
+  },
+  {
+    id: 61,
+    title: "영어 5학년 문장 매칭게임",
+    url: "https://gemini.google.com/share/335441b91a81",
+    description: "",
+  },
+  {
+    id: 62,
+    title: "영어 5학년 영어 단어 매칭 게임(레벨 없는 버전)",
+    url: "https://gemini.google.com/share/f88844c56fac",
+    description: "",
+  },
+  {
+    id: 63,
+    title: "우리 반 독서 시계",
+    url: "https://gemini.google.com/share/38204d696adb",
+    description: "",
+  },
+  {
+    id: 64,
+    title: "3~4학년 곱셈 나눗셈 마스터",
+    url: "https://gemini.google.com/share/6a5c8478a71c",
+    description: "",
+  },
 ];
 
 export default function Home() {
   const [modalType, setModalType] = useState<"privacy" | "terms" | null>(null);
+  const [activeTab, setActiveTab] = useState<TabType>("official");
 
   const handleOpenPrivacy = () => setModalType("privacy");
   const handleOpenTerms = () => setModalType("terms");
@@ -310,9 +755,39 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <Header />
 
+      {/* Tab Navigation */}
+      <nav className="tab-nav-bar">
+        <div className="max-w-7xl mx-auto px-4 flex">
+          <button
+            onClick={() => setActiveTab("official")}
+            className={`tab-nav-item ${
+              activeTab === "official" ? "tab-nav-active" : ""
+            }`}
+          >
+            <span className="text-lg">🌻</span>
+            <span>앱뜰 공식 앱</span>
+          </button>
+          <button
+            onClick={() => setActiveTab("vibe")}
+            className={`tab-nav-item ${
+              activeTab === "vibe" ? "tab-nav-active" : ""
+            }`}
+          >
+            <span className="text-lg">🎨</span>
+            <span>바이브 신답</span>
+          </button>
+        </div>
+      </nav>
+
       <main className="flex-grow">
-        <Hero />
-        <AppGallery apps={apps} />
+        {activeTab === "official" ? (
+          <>
+            <Hero />
+            <AppGallery apps={apps} />
+          </>
+        ) : (
+          <VibeShindap items={vibeItems} />
+        )}
       </main>
 
       <Footer

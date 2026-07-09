@@ -147,3 +147,102 @@ html {
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+
+/* ========== Tab Navigation ========== */
+.tab-nav-bar {
+  background: white;
+  border-bottom: 2px solid var(--primary-100);
+  position: sticky;
+  top: 64px; /* below header */
+  z-index: 40;
+}
+
+@media (min-width: 640px) {
+  .tab-nav-bar {
+    top: 80px;
+  }
+}
+
+.tab-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--warm-300);
+  border-bottom: 3px solid transparent;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  white-space: nowrap;
+}
+
+.tab-nav-item:hover {
+  color: var(--primary-600);
+  background: var(--primary-50);
+}
+
+.tab-nav-active {
+  color: var(--primary-700);
+  border-bottom-color: var(--primary-500);
+  background: var(--primary-50);
+}
+
+/* ========== Vibe Shindap Component ========== */
+.vibe-list-card {
+  background: white;
+  border: 1px solid var(--primary-100);
+  border-radius: 0.875rem;
+  padding: 1rem 1.25rem;
+  transition: all 0.25s ease;
+  animation: slideUp 0.4s ease both;
+}
+
+.vibe-list-card:hover {
+  border-color: var(--primary-300);
+  box-shadow: 0 6px 24px rgba(124, 179, 66, 0.1);
+  transform: translateX(4px);
+}
+
+.vibe-list-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  background: var(--primary-100);
+  color: var(--primary-700);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+}
+
+.vibe-link {
+  display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--primary-500);
+  text-decoration: none;
+  word-break: break-all;
+  transition: color 0.2s;
+}
+
+.vibe-link:hover {
+  color: var(--primary-700);
+  text-decoration: underline;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
