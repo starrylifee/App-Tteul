@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ADMIN_SESSION_KEYS,
@@ -9,52 +9,208 @@ import {
   resizeImage,
 } from "@/lib/adminShared";
 
-type AdminTab = "official" | "vibe";
+type AdminType = "vibe" | "official";
 
 const CATEGORIES = ["교과", "학급운영", "창체"] as const;
 
+const inputClass =
+  "w-full px-3.5 py-2.5 rounded-xl border border-primary-100 bg-warm-50/20 text-sm text-foreground focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100 transition-colors";
+
 export default function AdminPage() {
-  const [tab, setTab] = useState<AdminTab>("official");
+  // selected: 비밀번호 확인 중인 유형 / authed: 인증 완료된 유형+비밀번호
+  const [selected, setSelected] = useState<AdminType | null>(null);
+  const [authed, setAuthed] = useState<{
+    type: AdminType;
+    password: string;
+  } | null>(null);
+
+  const reset = () => {
+    setSelected(null);
+    setAuthed(null);
+  };
 
   return (
     <div className="min-h-screen bg-warm-50/30 py-10 px-4">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-2xl font-bold text-primary-700">
-            🔐 앱뜰 관리자 모드
+            🔐 앱뜰 등록하기
           </h1>
           <Link href="/" className="text-sm text-primary-500 hover:underline">
             ← 앱뜰로 돌아가기
           </Link>
         </div>
 
-        {/* Tab selector */}
-        <div className="flex gap-2 mb-6">
-          <button
-            onClick={() => setTab("official")}
-            className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${
-              tab === "official"
-                ? "bg-primary-500 text-white"
-                : "bg-white text-warm-300 border border-primary-100 hover:bg-primary-50"
-            }`}
-          >
-            🌻 앱뜰 공식 앱 등록
-          </button>
-          <button
-            onClick={() => setTab("vibe")}
-            className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${
-              tab === "vibe"
-                ? "bg-primary-500 text-white"
-                : "bg-white text-warm-300 border border-primary-100 hover:bg-primary-50"
-            }`}
-          >
-            🎨 바이브 신답 등록
-          </button>
-        </div>
+        {!authed ? (
+          <ChoiceScreen onSelect={setSelected} />
+        ) : (
+          <div>
+            <button
+              onClick={reset}
+              className="mb-4 text-sm text-primary-500 hover:underline"
+            >
+              ← 처음으로
+            </button>
+            <div className="bg-white rounded-2xl shadow-md border border-primary-50 p-6">
+              {authed.type === "vibe" ? (
+                <VibeForm password={authed.password} />
+              ) : (
+                <OfficialForm password={authed.password} />
+              )}
+            </div>
+          </div>
+        )}
+      </div>
 
-        <div className="bg-white rounded-2xl shadow-md border border-primary-50 p-6">
-          {tab === "official" ? <OfficialForm /> : <VibeForm />}
+      {selected && !authed && (
+        <PasswordModal
+          type={selected}
+          onCancel={() => setSelected(null)}
+          onSuccess={(password) => {
+            setAuthed({ type: selected, password });
+            setSelected(null);
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+function ChoiceScreen({ onSelect }: { onSelect: (t: AdminType) => void }) {
+  return (
+    <div className="space-y-4">
+      <p className="text-warm-300 text-sm mb-6">
+        무엇을 등록하시나요? 선택하면 비밀번호를 확인합니다.
+      </p>
+
+      <button
+        onClick={() => onSelect("vibe")}
+        className="w-full bg-white rounded-2xl shadow-md border-2 border-primary-50 hover:border-primary-300 hover:shadow-lg p-6 text-left transition-all group"
+      >
+        <div className="flex items-center gap-4">
+          <span className="text-4xl">🎨</span>
+          <div>
+            <h2 className="text-lg font-bold text-primary-700 group-hover:text-primary-500 transition-colors">
+              바이브 신답 등록
+            </h2>
+            <p className="text-sm text-warm-300 mt-0.5">
+              바이브특공대 습작 올리기
+            </p>
+          </div>
+          <span className="ml-auto text-primary-300 group-hover:translate-x-1 transition-transform">
+            →
+          </span>
         </div>
+      </button>
+
+      <button
+        onClick={() => onSelect("official")}
+        className="w-full bg-white rounded-2xl shadow-md border-2 border-primary-50 hover:border-primary-300 hover:shadow-lg p-6 text-left transition-all group"
+      >
+        <div className="flex items-center gap-4">
+          <span className="text-4xl">🌻</span>
+          <div>
+            <h2 className="text-lg font-bold text-primary-700 group-hover:text-primary-500 transition-colors">
+              앱뜰 공식 앱 등록
+            </h2>
+            <p className="text-sm text-warm-300 mt-0.5">
+              공식 앱 갤러리에 추가 (관리자 전용)
+            </p>
+          </div>
+          <span className="ml-auto text-primary-300 group-hover:translate-x-1 transition-transform">
+            →
+          </span>
+        </div>
+      </button>
+    </div>
+  );
+}
+
+function PasswordModal({
+  type,
+  onCancel,
+  onSuccess,
+}: {
+  type: AdminType;
+  onCancel: () => void;
+  onSuccess: (password: string) => void;
+}) {
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!password) return;
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type, password }),
+      });
+      if (res.ok) {
+        onSuccess(password);
+        return;
+      }
+      const data = await res.json().catch(() => ({}) as { error?: string });
+      setLoading(false);
+      setError(data.error || "비밀번호가 올바르지 않습니다.");
+    } catch {
+      setLoading(false);
+      setError("네트워크 오류가 발생했습니다.");
+    }
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4"
+      onClick={onCancel}
+    >
+      <div
+        className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h3 className="text-lg font-bold text-primary-700 mb-1">
+          {type === "vibe" ? "🎨 바이브 신답 등록" : "🌻 앱뜰 공식 앱 등록"}
+        </h3>
+        <p className="text-sm text-warm-300 mb-4">비밀번호를 입력해 주세요</p>
+
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <input
+            ref={inputRef}
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className={inputClass}
+            placeholder="비밀번호"
+          />
+          {error && (
+            <p className="text-sm text-red-600 font-medium">⚠️ {error}</p>
+          )}
+          <div className="flex gap-2 pt-1">
+            <button
+              type="button"
+              onClick={onCancel}
+              className="flex-1 py-2.5 rounded-xl border border-primary-100 text-warm-300 font-semibold hover:bg-primary-50 transition-colors"
+            >
+              취소
+            </button>
+            <button
+              type="submit"
+              disabled={loading || !password}
+              className="flex-1 py-2.5 rounded-xl bg-primary-500 hover:bg-primary-600 disabled:opacity-50 text-white font-bold transition-colors"
+            >
+              {loading ? "확인 중..." : "확인"}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
@@ -74,9 +230,6 @@ function FieldLabel({
     </label>
   );
 }
-
-const inputClass =
-  "w-full px-3.5 py-2.5 rounded-xl border border-primary-100 bg-warm-50/20 text-sm text-foreground focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100 transition-colors";
 
 function StatusMessage({
   status,
@@ -102,8 +255,7 @@ function StatusMessage({
   return null;
 }
 
-function OfficialForm() {
-  const [password, setPassword] = useState("");
+function OfficialForm({ password }: { password: string }) {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [description, setDescription] = useState("");
@@ -176,18 +328,9 @@ function OfficialForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      <div>
-        <FieldLabel required>관리자 비밀번호 (앱뜰 공식)</FieldLabel>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className={inputClass}
-          required
-        />
-      </div>
-
-      <hr className="border-primary-50" />
+      <h2 className="text-lg font-bold text-primary-700">
+        🌻 앱뜰 공식 앱 등록
+      </h2>
 
       <div>
         <FieldLabel required>앱 이름</FieldLabel>
@@ -311,11 +454,6 @@ function OfficialForm() {
       <button
         type="button"
         onClick={() => {
-          if (!password) {
-            setStatus("error");
-            setError("비밀번호를 먼저 입력하세요.");
-            return;
-          }
           sessionStorage.setItem(ADMIN_SESSION_KEYS.official, password);
           window.location.href = "/";
         }}
@@ -327,8 +465,7 @@ function OfficialForm() {
   );
 }
 
-function VibeForm() {
-  const [password, setPassword] = useState("");
+function VibeForm({ password }: { password: string }) {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [description, setDescription] = useState("");
@@ -371,18 +508,9 @@ function VibeForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      <div>
-        <FieldLabel required>관리자 비밀번호 (바이브 신답)</FieldLabel>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className={inputClass}
-          required
-        />
-      </div>
-
-      <hr className="border-primary-50" />
+      <h2 className="text-lg font-bold text-primary-700">
+        🎨 바이브 신답 등록
+      </h2>
 
       <div>
         <FieldLabel required>습작 제목</FieldLabel>
@@ -429,8 +557,7 @@ function VibeForm() {
       </button>
 
       <p className="text-xs text-warm-300 text-center">
-        습작 수정·삭제는 공식 관리자만 가능합니다 (앱뜰 공식 탭에서 관리 모드를
-        켜세요)
+        습작 수정·삭제는 공식 관리자만 가능합니다
       </p>
     </form>
   );
