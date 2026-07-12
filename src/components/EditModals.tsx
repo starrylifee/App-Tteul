@@ -335,7 +335,7 @@ export function EditVibeModal({
   };
 
   return (
-    <ModalShell title="✏️ 습작 수정" onClose={onClose}>
+    <ModalShell title="✏️ 수정" onClose={onClose}>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-semibold text-primary-700 mb-1.5">

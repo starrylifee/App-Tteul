@@ -76,7 +76,7 @@ export default function VibeShindap({ items, onEdit, onDelete }: VibeShindapProp
             🎨 바이브 신답
           </h2>
           <p className="text-warm-300">
-            서울신답초 바이브특공대의 습작 모음입니다
+            서울신답초 바이브특공대의 작품 모음입니다
           </p>
         </div>
 
@@ -85,9 +85,9 @@ export default function VibeShindap({ items, onEdit, onDelete }: VibeShindapProp
           <div className="text-center py-16">
             <span className="text-6xl mb-4 block">🌱</span>
             <p className="text-warm-300 text-lg">
-              아직 등록된 습작이 없어요.
+              아직 등록된 작품이 없어요.
               <br />
-              곧 새로운 습작이 자라날 거예요!
+              곧 새로운 작품이 자라날 거예요!
             </p>
           </div>
         ) : (

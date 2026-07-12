@@ -94,7 +94,7 @@ function ChoiceScreen({ onSelect }: { onSelect: (t: AdminType) => void }) {
               바이브 신답 등록
             </h2>
             <p className="text-sm text-warm-300 mt-0.5">
-              바이브특공대 습작 올리기
+              바이브특공대 작품 올리기
             </p>
           </div>
           <span className="ml-auto text-primary-300 group-hover:translate-x-1 transition-transform">
@@ -513,7 +513,7 @@ function VibeForm({ password }: { password: string }) {
       </h2>
 
       <div>
-        <FieldLabel required>습작 제목</FieldLabel>
+        <FieldLabel required>제목</FieldLabel>
         <input
           type="text"
           value={title}
@@ -553,11 +553,11 @@ function VibeForm({ password }: { password: string }) {
         disabled={status === "loading"}
         className="w-full py-3 rounded-xl bg-primary-500 hover:bg-primary-600 disabled:opacity-50 text-white font-bold transition-colors"
       >
-        {status === "loading" ? "등록 중..." : "🎨 습작 등록하기"}
+        {status === "loading" ? "등록 중..." : "🎨 등록하기"}
       </button>
 
       <p className="text-xs text-warm-300 text-center">
-        습작 수정·삭제는 공식 관리자만 가능합니다
+        수정·삭제는 공식 관리자만 가능합니다
       </p>
     </form>
   );
