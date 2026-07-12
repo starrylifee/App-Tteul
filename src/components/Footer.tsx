@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 
 interface FooterProps {
     onPrivacyClick: () => void;
@@ -76,7 +77,16 @@ export default function Footer({ onPrivacyClick, onTermsClick }: FooterProps) {
             <div className="border-t border-primary-600">
                 <div className="max-w-7xl mx-auto px-4 py-4">
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-primary-300">
-                        <p>© 2026 App-Tteul. All rights reserved.</p>
+                        <p>
+                            © 2026 App-Tteul. All rights reserved.
+                            <Link
+                                href="/admin"
+                                aria-label="관리자"
+                                className="ml-1 text-primary-600 hover:text-primary-300 transition-colors"
+                            >
+                                ·
+                            </Link>
+                        </p>
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={onPrivacyClick}

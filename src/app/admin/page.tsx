@@ -7,6 +7,40 @@ type AdminTab = "official" | "vibe";
 
 const CATEGORIES = ["교과", "학급운영", "창체"] as const;
 
+// 큰 이미지는 업로드 전에 브라우저에서 자동으로 줄임 (최대 1200px, webp 변환)
+const MAX_THUMB_DIM = 1200;
+
+async function resizeImage(
+  file: File
+): Promise<{ blob: Blob; name: string }> {
+  if (!/^image\/(jpeg|png|webp)$/.test(file.type)) {
+    return { blob: file, name: file.name };
+  }
+  try {
+    const bitmap = await createImageBitmap(file);
+    const scale = Math.min(
+      1,
+      MAX_THUMB_DIM / Math.max(bitmap.width, bitmap.height)
+    );
+    if (scale === 1 && file.size <= 500 * 1024) {
+      return { blob: file, name: file.name };
+    }
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.round(bitmap.width * scale);
+    canvas.height = Math.round(bitmap.height * scale);
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return { blob: file, name: file.name };
+    ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    const blob = await new Promise<Blob | null>((resolve) =>
+      canvas.toBlob(resolve, "image/webp", 0.85)
+    );
+    if (!blob) return { blob: file, name: file.name };
+    return { blob, name: file.name.replace(/\.[^.]+$/, "") + ".webp" };
+  } catch {
+    return { blob: file, name: file.name };
+  }
+}
+
 const DEFAULT_THUMBNAILS = [
   { path: "/defaults/sprout.svg", label: "새싹" },
   { path: "/defaults/book.svg", label: "책" },
@@ -134,11 +168,6 @@ function OfficialForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (thumbnail && thumbnail.size > 4 * 1024 * 1024) {
-      setStatus("error");
-      setError("썸네일은 4MB 이하 이미지로 올려주세요.");
-      return;
-    }
     setStatus("loading");
     setError("");
 
@@ -149,8 +178,17 @@ function OfficialForm() {
     form.append("description", description);
     form.append("category", category);
     form.append("tags", tags);
-    if (thumbnail) form.append("thumbnail", thumbnail);
-    if (!thumbnail && defaultThumb) form.append("defaultThumbnail", defaultThumb);
+    if (thumbnail) {
+      const { blob, name } = await resizeImage(thumbnail);
+      if (blob.size > 4 * 1024 * 1024) {
+        setStatus("error");
+        setError("썸네일 용량이 너무 큽니다. 다른 이미지로 시도해 주세요.");
+        return;
+      }
+      form.append("thumbnail", blob, name);
+    } else if (defaultThumb) {
+      form.append("defaultThumbnail", defaultThumb);
+    }
 
     try {
       const res = await fetch("/api/apps", { method: "POST", body: form });
@@ -254,7 +292,7 @@ function OfficialForm() {
       </div>
 
       <div>
-        <FieldLabel>썸네일 이미지 (선택, 4MB 이하)</FieldLabel>
+        <FieldLabel>썸네일 이미지 (선택 — 큰 이미지는 자동으로 줄여서 올라갑니다)</FieldLabel>
         <input
           type="file"
           accept="image/*"
