@@ -71,7 +71,8 @@ export async function POST(request: Request) {
   }
 
   const title = String(form.get("title") ?? "").trim();
-  const url = String(form.get("url") ?? "").trim();
+  let url = String(form.get("url") ?? "").trim();
+  if (url && !/^https?:\/\//i.test(url)) url = "https://" + url;
   const description = String(form.get("description") ?? "").trim();
   const category = String(form.get("category") ?? "");
   const tags = String(form.get("tags") ?? "")

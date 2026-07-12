@@ -56,7 +56,8 @@ export async function POST(request: Request) {
   }
 
   const title = String(body.title ?? "").trim();
-  const url = String(body.url ?? "").trim();
+  let url = String(body.url ?? "").trim();
+  if (url && !/^https?:\/\//i.test(url)) url = "https://" + url;
   const description = String(body.description ?? "").trim();
 
   if (!title || !url) {

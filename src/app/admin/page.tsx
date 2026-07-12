@@ -7,6 +7,13 @@ type AdminTab = "official" | "vibe";
 
 const CATEGORIES = ["교과", "학급운영", "창체"] as const;
 
+// "www.naver.com"처럼 입력해도 https://를 자동으로 붙임
+function normalizeUrl(value: string): string {
+  const s = value.trim();
+  if (!s) return s;
+  return /^https?:\/\//i.test(s) ? s : "https://" + s;
+}
+
 // 큰 이미지는 업로드 전에 브라우저에서 자동으로 줄임 (최대 1200px, webp 변환)
 const MAX_THUMB_DIM = 1200;
 
@@ -174,7 +181,7 @@ function OfficialForm() {
     const form = new FormData();
     form.append("password", password);
     form.append("title", title);
-    form.append("url", url);
+    form.append("url", normalizeUrl(url));
     form.append("description", description);
     form.append("category", category);
     form.append("tags", tags);
@@ -241,11 +248,11 @@ function OfficialForm() {
       <div>
         <FieldLabel required>사이트 URL</FieldLabel>
         <input
-          type="url"
+          type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           className={inputClass}
-          placeholder="https://..."
+          placeholder="예: www.naver.com (https:// 없이 입력해도 됩니다)"
           required
         />
       </div>
@@ -367,7 +374,12 @@ function VibeForm() {
       const res = await fetch("/api/vibe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password, title, url, description }),
+        body: JSON.stringify({
+          password,
+          title,
+          url: normalizeUrl(url),
+          description,
+        }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -415,11 +427,11 @@ function VibeForm() {
       <div>
         <FieldLabel required>링크 URL</FieldLabel>
         <input
-          type="url"
+          type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           className={inputClass}
-          placeholder="https://gemini.google.com/share/..."
+          placeholder="예: gemini.google.com/share/... (https:// 없이 입력해도 됩니다)"
           required
         />
       </div>
