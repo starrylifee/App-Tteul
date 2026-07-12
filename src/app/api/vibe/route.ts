@@ -84,9 +84,10 @@ export async function POST(request: Request) {
   return NextResponse.json({ ok: true });
 }
 
+// 수정·삭제는 공식 관리자 비밀번호로만 가능 (등록 비밀번호는 여러 명이 공유하므로)
 export async function PUT(request: Request) {
   const supabase = getSupabaseAdmin();
-  const adminPassword = process.env.ADMIN_PASSWORD_VIBE;
+  const adminPassword = process.env.ADMIN_PASSWORD_OFFICIAL;
   if (!supabase || !adminPassword) return notConfigured();
 
   const body = await request.json().catch(() => null);
@@ -126,7 +127,7 @@ export async function PUT(request: Request) {
 
 export async function DELETE(request: Request) {
   const supabase = getSupabaseAdmin();
-  const adminPassword = process.env.ADMIN_PASSWORD_VIBE;
+  const adminPassword = process.env.ADMIN_PASSWORD_OFFICIAL;
   if (!supabase || !adminPassword) return notConfigured();
 
   const body = await request.json().catch(() => null);

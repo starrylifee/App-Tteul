@@ -321,7 +321,7 @@ function OfficialForm() {
         }}
         className="w-full py-2.5 rounded-xl border border-primary-200 text-primary-600 font-semibold hover:bg-primary-50 transition-colors text-sm"
       >
-        🔧 이 비밀번호로 메인에서 수정·삭제하기
+        🔧 메인에서 수정·삭제하기 (공식 앱 + 바이브 신답 모두)
       </button>
     </form>
   );
@@ -428,21 +428,10 @@ function VibeForm() {
         {status === "loading" ? "등록 중..." : "🎨 습작 등록하기"}
       </button>
 
-      <button
-        type="button"
-        onClick={() => {
-          if (!password) {
-            setStatus("error");
-            setError("비밀번호를 먼저 입력하세요.");
-            return;
-          }
-          sessionStorage.setItem(ADMIN_SESSION_KEYS.vibe, password);
-          window.location.href = "/";
-        }}
-        className="w-full py-2.5 rounded-xl border border-primary-200 text-primary-600 font-semibold hover:bg-primary-50 transition-colors text-sm"
-      >
-        🔧 이 비밀번호로 메인에서 수정·삭제하기
-      </button>
+      <p className="text-xs text-warm-300 text-center">
+        습작 수정·삭제는 공식 관리자만 가능합니다 (앱뜰 공식 탭에서 관리 모드를
+        켜세요)
+      </p>
     </form>
   );
 }

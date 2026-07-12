@@ -54,5 +54,4 @@ export async function resizeImage(
 
 export const ADMIN_SESSION_KEYS = {
   official: "apptteul_admin_official",
-  vibe: "apptteul_admin_vibe",
 } as const;

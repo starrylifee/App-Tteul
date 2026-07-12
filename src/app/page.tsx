@@ -20,9 +20,8 @@ export default function Home() {
   const [apps, setApps] = useState<AppData[]>(baseApps);
   const [vibeItems, setVibeItems] = useState<VibeItem[]>(baseVibeItems);
 
-  // 관리 모드: /admin에서 "관리 모드 켜기"를 누르면 sessionStorage에 저장됨
+  // 관리 모드: /admin에서 공식 비밀번호로 켜면 공식 앱·바이브 신답 모두 수정·삭제 가능
   const [officialPw, setOfficialPw] = useState("");
-  const [vibePw, setVibePw] = useState("");
   const [adminMsg, setAdminMsg] = useState("");
   const [editingApp, setEditingApp] = useState<AppData | null>(null);
   const [editingVibe, setEditingVibe] = useState<VibeItem | null>(null);
@@ -56,14 +55,11 @@ export default function Home() {
   useEffect(() => {
     void reload();
     setOfficialPw(sessionStorage.getItem(ADMIN_SESSION_KEYS.official) ?? "");
-    setVibePw(sessionStorage.getItem(ADMIN_SESSION_KEYS.vibe) ?? "");
   }, [reload]);
 
   const exitAdmin = () => {
     sessionStorage.removeItem(ADMIN_SESSION_KEYS.official);
-    sessionStorage.removeItem(ADMIN_SESSION_KEYS.vibe);
     setOfficialPw("");
-    setVibePw("");
     setAdminMsg("");
     setEditingApp(null);
     setEditingVibe(null);
@@ -100,7 +96,7 @@ export default function Home() {
       const res = await fetch("/api/vibe", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: vibePw, id: item.id }),
+        body: JSON.stringify({ password: officialPw, id: item.id }),
       });
       if (res.ok) void reload();
       else await handleMutationError(res);
@@ -113,7 +109,7 @@ export default function Home() {
   const handleOpenTerms = () => setModalType("terms");
   const handleCloseModal = () => setModalType(null);
 
-  const isAdmin = Boolean(officialPw || vibePw);
+  const isAdmin = Boolean(officialPw);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -151,8 +147,6 @@ export default function Home() {
               <>
                 <span className="font-semibold text-amber-700">
                   🔧 관리 모드
-                  {officialPw && " · 공식 앱"}
-                  {vibePw && " · 바이브 신답"}
                 </span>
                 <span className="text-amber-600">
                   카드의 ✏️(수정) · 🗑️(삭제) 버튼을 사용하세요
@@ -185,8 +179,8 @@ export default function Home() {
         ) : (
           <VibeShindap
             items={vibeItems}
-            onEdit={vibePw ? setEditingVibe : undefined}
-            onDelete={vibePw ? deleteVibe : undefined}
+            onEdit={officialPw ? setEditingVibe : undefined}
+            onDelete={officialPw ? deleteVibe : undefined}
           />
         )}
       </main>
@@ -221,7 +215,7 @@ export default function Home() {
       {editingVibe && (
         <EditVibeModal
           item={editingVibe}
-          password={vibePw}
+          password={officialPw}
           onClose={() => setEditingVibe(null)}
           onSaved={() => {
             setEditingVibe(null);
