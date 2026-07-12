@@ -1,0 +1,366 @@
+"use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
+
+type AdminTab = "official" | "vibe";
+
+const CATEGORIES = ["교과", "학급운영", "창체"] as const;
+
+export default function AdminPage() {
+  const [tab, setTab] = useState<AdminTab>("official");
+
+  return (
+    <div className="min-h-screen bg-warm-50/30 py-10 px-4">
+      <div className="max-w-2xl mx-auto">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-2xl font-bold text-primary-700">
+            🔐 앱뜰 관리자 모드
+          </h1>
+          <Link href="/" className="text-sm text-primary-500 hover:underline">
+            ← 앱뜰로 돌아가기
+          </Link>
+        </div>
+
+        {/* Tab selector */}
+        <div className="flex gap-2 mb-6">
+          <button
+            onClick={() => setTab("official")}
+            className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${
+              tab === "official"
+                ? "bg-primary-500 text-white"
+                : "bg-white text-warm-300 border border-primary-100 hover:bg-primary-50"
+            }`}
+          >
+            🌻 앱뜰 공식 앱 등록
+          </button>
+          <button
+            onClick={() => setTab("vibe")}
+            className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${
+              tab === "vibe"
+                ? "bg-primary-500 text-white"
+                : "bg-white text-warm-300 border border-primary-100 hover:bg-primary-50"
+            }`}
+          >
+            🎨 바이브 신답 등록
+          </button>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-md border border-primary-50 p-6">
+          {tab === "official" ? <OfficialForm /> : <VibeForm />}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FieldLabel({
+  children,
+  required,
+}: {
+  children: React.ReactNode;
+  required?: boolean;
+}) {
+  return (
+    <label className="block text-sm font-semibold text-primary-700 mb-1.5">
+      {children}
+      {required && <span className="text-red-400 ml-0.5">*</span>}
+    </label>
+  );
+}
+
+const inputClass =
+  "w-full px-3.5 py-2.5 rounded-xl border border-primary-100 bg-warm-50/20 text-sm text-foreground focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100 transition-colors";
+
+function StatusMessage({
+  status,
+  error,
+}: {
+  status: "idle" | "loading" | "success" | "error";
+  error: string;
+}) {
+  if (status === "success") {
+    return (
+      <div className="bg-primary-50 border border-primary-200 rounded-xl p-3 text-sm text-primary-700 font-medium">
+        ✅ 등록되었습니다! 메인 화면에 바로 반영됩니다.
+      </div>
+    );
+  }
+  if (status === "error") {
+    return (
+      <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-sm text-red-600 font-medium">
+        ⚠️ {error}
+      </div>
+    );
+  }
+  return null;
+}
+
+function OfficialForm() {
+  const [password, setPassword] = useState("");
+  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState<string>("교과");
+  const [tags, setTags] = useState("");
+  const [thumbnail, setThumbnail] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string>("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
+    "idle"
+  );
+  const [error, setError] = useState("");
+
+  const handleFile = (file: File | null) => {
+    setThumbnail(file);
+    if (preview) URL.revokeObjectURL(preview);
+    setPreview(file ? URL.createObjectURL(file) : "");
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (thumbnail && thumbnail.size > 4 * 1024 * 1024) {
+      setStatus("error");
+      setError("썸네일은 4MB 이하 이미지로 올려주세요.");
+      return;
+    }
+    setStatus("loading");
+    setError("");
+
+    const form = new FormData();
+    form.append("password", password);
+    form.append("title", title);
+    form.append("url", url);
+    form.append("description", description);
+    form.append("category", category);
+    form.append("tags", tags);
+    if (thumbnail) form.append("thumbnail", thumbnail);
+
+    try {
+      const res = await fetch("/api/apps", { method: "POST", body: form });
+      const data = await res.json();
+      if (!res.ok) {
+        setStatus("error");
+        setError(data.error || "등록에 실패했습니다.");
+        return;
+      }
+      setStatus("success");
+      setTitle("");
+      setUrl("");
+      setDescription("");
+      setTags("");
+      handleFile(null);
+    } catch {
+      setStatus("error");
+      setError("네트워크 오류가 발생했습니다.");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div>
+        <FieldLabel required>관리자 비밀번호 (앱뜰 공식)</FieldLabel>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className={inputClass}
+          required
+        />
+      </div>
+
+      <hr className="border-primary-50" />
+
+      <div>
+        <FieldLabel required>앱 이름</FieldLabel>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className={inputClass}
+          placeholder="예: 수학 도형 밀기 게임"
+          required
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>사이트 URL</FieldLabel>
+        <input
+          type="url"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          className={inputClass}
+          placeholder="https://..."
+          required
+        />
+      </div>
+
+      <div>
+        <FieldLabel>설명</FieldLabel>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className={`${inputClass} min-h-[80px] resize-y`}
+          placeholder="앱에 대한 한두 문장 설명"
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>카테고리</FieldLabel>
+        <div className="flex gap-2">
+          {CATEGORIES.map((c) => (
+            <button
+              key={c}
+              type="button"
+              onClick={() => setCategory(c)}
+              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors ${
+                category === c
+                  ? "bg-primary-500 text-white"
+                  : "bg-warm-50/50 text-warm-300 border border-primary-100 hover:bg-primary-50"
+              }`}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <FieldLabel>태그 (쉼표로 구분)</FieldLabel>
+        <input
+          type="text"
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
+          className={inputClass}
+          placeholder="예: 수학, 도형, STEAM, 게임"
+        />
+      </div>
+
+      <div>
+        <FieldLabel>썸네일 이미지 (선택, 4MB 이하)</FieldLabel>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => handleFile(e.target.files?.[0] ?? null)}
+          className="block w-full text-sm text-warm-300 file:mr-3 file:px-4 file:py-2 file:rounded-xl file:border-0 file:bg-primary-100 file:text-primary-700 file:text-sm file:font-semibold file:cursor-pointer hover:file:bg-primary-200"
+        />
+        {preview && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={preview}
+            alt="썸네일 미리보기"
+            className="mt-3 h-36 rounded-xl object-cover border border-primary-100"
+          />
+        )}
+      </div>
+
+      <StatusMessage status={status} error={error} />
+
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        className="w-full py-3 rounded-xl bg-primary-500 hover:bg-primary-600 disabled:opacity-50 text-white font-bold transition-colors"
+      >
+        {status === "loading" ? "등록 중..." : "🌻 공식 앱 등록하기"}
+      </button>
+    </form>
+  );
+}
+
+function VibeForm() {
+  const [password, setPassword] = useState("");
+  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
+    "idle"
+  );
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setError("");
+
+    try {
+      const res = await fetch("/api/vibe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password, title, url, description }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setStatus("error");
+        setError(data.error || "등록에 실패했습니다.");
+        return;
+      }
+      setStatus("success");
+      setTitle("");
+      setUrl("");
+      setDescription("");
+    } catch {
+      setStatus("error");
+      setError("네트워크 오류가 발생했습니다.");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div>
+        <FieldLabel required>관리자 비밀번호 (바이브 신답)</FieldLabel>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className={inputClass}
+          required
+        />
+      </div>
+
+      <hr className="border-primary-50" />
+
+      <div>
+        <FieldLabel required>습작 제목</FieldLabel>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className={inputClass}
+          placeholder="예: 곱셈 나눗셈 마스터"
+          required
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>링크 URL</FieldLabel>
+        <input
+          type="url"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          className={inputClass}
+          placeholder="https://gemini.google.com/share/..."
+          required
+        />
+      </div>
+
+      <div>
+        <FieldLabel>설명 (선택)</FieldLabel>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className={`${inputClass} min-h-[80px] resize-y`}
+          placeholder="사용 팁이나 참고 사항"
+        />
+      </div>
+
+      <StatusMessage status={status} error={error} />
+
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        className="w-full py-3 rounded-xl bg-primary-500 hover:bg-primary-600 disabled:opacity-50 text-white font-bold transition-colors"
+      >
+        {status === "loading" ? "등록 중..." : "🎨 습작 등록하기"}
+      </button>
+    </form>
+  );
+}
