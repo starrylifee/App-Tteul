@@ -2,60 +2,16 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import {
+  ADMIN_SESSION_KEYS,
+  DEFAULT_THUMBNAILS,
+  normalizeUrl,
+  resizeImage,
+} from "@/lib/adminShared";
 
 type AdminTab = "official" | "vibe";
 
 const CATEGORIES = ["교과", "학급운영", "창체"] as const;
-
-// "www.naver.com"처럼 입력해도 https://를 자동으로 붙임
-function normalizeUrl(value: string): string {
-  const s = value.trim();
-  if (!s) return s;
-  return /^https?:\/\//i.test(s) ? s : "https://" + s;
-}
-
-// 큰 이미지는 업로드 전에 브라우저에서 자동으로 줄임 (최대 1200px, webp 변환)
-const MAX_THUMB_DIM = 1200;
-
-async function resizeImage(
-  file: File
-): Promise<{ blob: Blob; name: string }> {
-  if (!/^image\/(jpeg|png|webp)$/.test(file.type)) {
-    return { blob: file, name: file.name };
-  }
-  try {
-    const bitmap = await createImageBitmap(file);
-    const scale = Math.min(
-      1,
-      MAX_THUMB_DIM / Math.max(bitmap.width, bitmap.height)
-    );
-    if (scale === 1 && file.size <= 500 * 1024) {
-      return { blob: file, name: file.name };
-    }
-    const canvas = document.createElement("canvas");
-    canvas.width = Math.round(bitmap.width * scale);
-    canvas.height = Math.round(bitmap.height * scale);
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return { blob: file, name: file.name };
-    ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-    const blob = await new Promise<Blob | null>((resolve) =>
-      canvas.toBlob(resolve, "image/webp", 0.85)
-    );
-    if (!blob) return { blob: file, name: file.name };
-    return { blob, name: file.name.replace(/\.[^.]+$/, "") + ".webp" };
-  } catch {
-    return { blob: file, name: file.name };
-  }
-}
-
-const DEFAULT_THUMBNAILS = [
-  { path: "/defaults/sprout.svg", label: "새싹" },
-  { path: "/defaults/book.svg", label: "책" },
-  { path: "/defaults/art.svg", label: "미술" },
-  { path: "/defaults/game.svg", label: "게임" },
-  { path: "/defaults/math.svg", label: "수학" },
-  { path: "/defaults/school.svg", label: "학교" },
-];
 
 export default function AdminPage() {
   const [tab, setTab] = useState<AdminTab>("official");
@@ -351,6 +307,22 @@ function OfficialForm() {
       >
         {status === "loading" ? "등록 중..." : "🌻 공식 앱 등록하기"}
       </button>
+
+      <button
+        type="button"
+        onClick={() => {
+          if (!password) {
+            setStatus("error");
+            setError("비밀번호를 먼저 입력하세요.");
+            return;
+          }
+          sessionStorage.setItem(ADMIN_SESSION_KEYS.official, password);
+          window.location.href = "/";
+        }}
+        className="w-full py-2.5 rounded-xl border border-primary-200 text-primary-600 font-semibold hover:bg-primary-50 transition-colors text-sm"
+      >
+        🔧 이 비밀번호로 메인에서 수정·삭제하기
+      </button>
     </form>
   );
 }
@@ -454,6 +426,22 @@ function VibeForm() {
         className="w-full py-3 rounded-xl bg-primary-500 hover:bg-primary-600 disabled:opacity-50 text-white font-bold transition-colors"
       >
         {status === "loading" ? "등록 중..." : "🎨 습작 등록하기"}
+      </button>
+
+      <button
+        type="button"
+        onClick={() => {
+          if (!password) {
+            setStatus("error");
+            setError("비밀번호를 먼저 입력하세요.");
+            return;
+          }
+          sessionStorage.setItem(ADMIN_SESSION_KEYS.vibe, password);
+          window.location.href = "/";
+        }}
+        className="w-full py-2.5 rounded-xl border border-primary-200 text-primary-600 font-semibold hover:bg-primary-50 transition-colors text-sm"
+      >
+        🔧 이 비밀번호로 메인에서 수정·삭제하기
       </button>
     </form>
   );

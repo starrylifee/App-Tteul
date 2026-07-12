@@ -5,11 +5,13 @@ import AppCard, { AppData } from './AppCard';
 
 interface AppGalleryProps {
     apps: AppData[];
+    onEdit?: (app: AppData) => void;
+    onDelete?: (app: AppData) => void;
 }
 
 const categories = ['전체', '교과', '학급운영', '창체'] as const;
 
-export default function AppGallery({ apps }: AppGalleryProps) {
+export default function AppGallery({ apps, onEdit, onDelete }: AppGalleryProps) {
     const [activeCategory, setActiveCategory] = useState<string>('전체');
 
     const filteredApps = activeCategory === '전체'
@@ -50,7 +52,7 @@ export default function AppGallery({ apps }: AppGalleryProps) {
                 {/* App grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {filteredApps.map((app) => (
-                        <AppCard key={app.id} app={app} />
+                        <AppCard key={app.id} app={app} onEdit={onEdit} onDelete={onDelete} />
                     ))}
                 </div>
 

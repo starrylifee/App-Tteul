@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
 
 export interface AppData {
     id: number;
@@ -16,9 +16,27 @@ export interface AppData {
 
 interface AppCardProps {
     app: AppData;
+    onEdit?: (app: AppData) => void;
+    onDelete?: (app: AppData) => void;
 }
 
-export default function AppCard({ app }: AppCardProps) {
+export default function AppCard({ app, onEdit, onDelete }: AppCardProps) {
+    const [confirmDelete, setConfirmDelete] = useState(false);
+    const confirmTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const handleDeleteClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (confirmDelete) {
+            if (confirmTimer.current) clearTimeout(confirmTimer.current);
+            setConfirmDelete(false);
+            onDelete?.(app);
+        } else {
+            setConfirmDelete(true);
+            confirmTimer.current = setTimeout(() => setConfirmDelete(false), 3000);
+        }
+    };
+
     const getCategoryStyle = (category: string) => {
         switch (category) {
             case '교과':
@@ -70,6 +88,38 @@ export default function AppCard({ app }: AppCardProps) {
                 <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold ${getCategoryStyle(app.category)}`}>
                     #{app.category}
                 </div>
+
+                {/* Admin controls (관리 모드일 때만) */}
+                {(onEdit || onDelete) && (
+                    <div className="absolute top-3 left-3 flex gap-1.5 z-10">
+                        {onEdit && (
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    onEdit(app);
+                                }}
+                                className="px-2.5 py-1.5 rounded-lg bg-white/90 hover:bg-white text-sm shadow-md transition-colors"
+                                title="수정"
+                            >
+                                ✏️
+                            </button>
+                        )}
+                        {onDelete && (
+                            <button
+                                onClick={handleDeleteClick}
+                                className={`px-2.5 py-1.5 rounded-lg text-sm shadow-md transition-colors ${
+                                    confirmDelete
+                                        ? 'bg-red-500 hover:bg-red-600 text-white font-bold'
+                                        : 'bg-white/90 hover:bg-white'
+                                }`}
+                                title="삭제"
+                            >
+                                {confirmDelete ? '정말 삭제?' : '🗑️'}
+                            </button>
+                        )}
+                    </div>
+                )}
             </div>
 
             {/* Content */}

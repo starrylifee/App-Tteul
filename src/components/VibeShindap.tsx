@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
 
 export interface VibeItem {
   id: number;
@@ -11,9 +11,62 @@ export interface VibeItem {
 
 interface VibeShindapProps {
   items: VibeItem[];
+  onEdit?: (item: VibeItem) => void;
+  onDelete?: (item: VibeItem) => void;
 }
 
-export default function VibeShindap({ items }: VibeShindapProps) {
+function VibeAdminButtons({
+  item,
+  onEdit,
+  onDelete,
+}: {
+  item: VibeItem;
+  onEdit?: (item: VibeItem) => void;
+  onDelete?: (item: VibeItem) => void;
+}) {
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const confirmTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleDeleteClick = () => {
+    if (confirmDelete) {
+      if (confirmTimer.current) clearTimeout(confirmTimer.current);
+      setConfirmDelete(false);
+      onDelete?.(item);
+    } else {
+      setConfirmDelete(true);
+      confirmTimer.current = setTimeout(() => setConfirmDelete(false), 3000);
+    }
+  };
+
+  return (
+    <div className="flex gap-1.5 flex-shrink-0">
+      {onEdit && (
+        <button
+          onClick={() => onEdit(item)}
+          className="px-2.5 py-1.5 rounded-lg bg-primary-50 hover:bg-primary-100 text-sm transition-colors"
+          title="수정"
+        >
+          ✏️
+        </button>
+      )}
+      {onDelete && (
+        <button
+          onClick={handleDeleteClick}
+          className={`px-2.5 py-1.5 rounded-lg text-sm transition-colors ${
+            confirmDelete
+              ? "bg-red-500 hover:bg-red-600 text-white font-bold"
+              : "bg-primary-50 hover:bg-primary-100"
+          }`}
+          title="삭제"
+        >
+          {confirmDelete ? "정말 삭제?" : "🗑️"}
+        </button>
+      )}
+    </div>
+  );
+}
+
+export default function VibeShindap({ items, onEdit, onDelete }: VibeShindapProps) {
   return (
     <section className="py-12 sm:py-16 px-4 bg-warm-50/30 min-h-[60vh]">
       <div className="max-w-4xl mx-auto">
@@ -67,6 +120,13 @@ export default function VibeShindap({ items }: VibeShindapProps) {
                       </p>
                     )}
                   </div>
+                  {(onEdit || onDelete) && (
+                    <VibeAdminButtons
+                      item={item}
+                      onEdit={onEdit}
+                      onDelete={onDelete}
+                    />
+                  )}
                 </div>
               </div>
             ))}
