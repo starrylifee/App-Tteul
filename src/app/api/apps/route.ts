@@ -5,6 +5,15 @@ export const dynamic = "force-dynamic";
 
 const CATEGORIES = ["교과", "학급운영", "창체"] as const;
 
+const DEFAULT_THUMBNAILS = [
+  "/defaults/sprout.svg",
+  "/defaults/book.svg",
+  "/defaults/art.svg",
+  "/defaults/game.svg",
+  "/defaults/math.svg",
+  "/defaults/school.svg",
+];
+
 // DB에 등록된 앱 id가 하드코딩 id(1~999)와 겹치지 않도록 오프셋을 둠
 const DB_ID_OFFSET = 10000;
 
@@ -109,6 +118,11 @@ export async function POST(request: Request) {
     thumbnailUrl = supabase.storage
       .from(THUMBNAIL_BUCKET)
       .getPublicUrl(path).data.publicUrl;
+  } else {
+    const defaultThumbnail = String(form.get("defaultThumbnail") ?? "");
+    if (DEFAULT_THUMBNAILS.includes(defaultThumbnail)) {
+      thumbnailUrl = defaultThumbnail;
+    }
   }
 
   const { error: insertError } = await supabase.from("apps").insert({

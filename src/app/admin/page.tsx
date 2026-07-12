@@ -7,6 +7,15 @@ type AdminTab = "official" | "vibe";
 
 const CATEGORIES = ["교과", "학급운영", "창체"] as const;
 
+const DEFAULT_THUMBNAILS = [
+  { path: "/defaults/sprout.svg", label: "새싹" },
+  { path: "/defaults/book.svg", label: "책" },
+  { path: "/defaults/art.svg", label: "미술" },
+  { path: "/defaults/game.svg", label: "게임" },
+  { path: "/defaults/math.svg", label: "수학" },
+  { path: "/defaults/school.svg", label: "학교" },
+];
+
 export default function AdminPage() {
   const [tab, setTab] = useState<AdminTab>("official");
 
@@ -105,6 +114,7 @@ function OfficialForm() {
   const [tags, setTags] = useState("");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [preview, setPreview] = useState<string>("");
+  const [defaultThumb, setDefaultThumb] = useState<string>("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle"
   );
@@ -114,6 +124,12 @@ function OfficialForm() {
     setThumbnail(file);
     if (preview) URL.revokeObjectURL(preview);
     setPreview(file ? URL.createObjectURL(file) : "");
+    if (file) setDefaultThumb("");
+  };
+
+  const handleDefaultThumb = (path: string) => {
+    setDefaultThumb((prev) => (prev === path ? "" : path));
+    handleFile(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -134,6 +150,7 @@ function OfficialForm() {
     form.append("category", category);
     form.append("tags", tags);
     if (thumbnail) form.append("thumbnail", thumbnail);
+    if (!thumbnail && defaultThumb) form.append("defaultThumbnail", defaultThumb);
 
     try {
       const res = await fetch("/api/apps", { method: "POST", body: form });
@@ -149,6 +166,7 @@ function OfficialForm() {
       setDescription("");
       setTags("");
       handleFile(null);
+      setDefaultThumb("");
     } catch {
       setStatus("error");
       setError("네트워크 오류가 발생했습니다.");
@@ -251,6 +269,32 @@ function OfficialForm() {
             className="mt-3 h-36 rounded-xl object-cover border border-primary-100"
           />
         )}
+
+        <p className="text-xs text-warm-300 mt-4 mb-2 font-medium">
+          또는 기본 썸네일 중에서 선택 (다시 누르면 해제)
+        </p>
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+          {DEFAULT_THUMBNAILS.map((t) => (
+            <button
+              key={t.path}
+              type="button"
+              onClick={() => handleDefaultThumb(t.path)}
+              className={`rounded-xl overflow-hidden border-2 transition-all ${
+                defaultThumb === t.path
+                  ? "border-primary-500 ring-2 ring-primary-200"
+                  : "border-primary-50 hover:border-primary-300"
+              }`}
+              title={t.label}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={t.path}
+                alt={t.label}
+                className="w-full aspect-[4/3] object-cover"
+              />
+            </button>
+          ))}
+        </div>
       </div>
 
       <StatusMessage status={status} error={error} />
