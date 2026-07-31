@@ -109,6 +109,11 @@ body {
   color: var(--secondary-500);
 }
 
+.tag-연수 {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
 /* Modal backdrop */
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.5);

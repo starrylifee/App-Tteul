@@ -8,7 +8,7 @@ export interface AppData {
     description: string;
     thumbnail: string;
     url: string;
-    category: '교과' | '학급운영' | '창체';
+    category: '교과' | '학급운영' | '창체' | '연수';
     tags?: string[];
     target?: string;
     notice?: string;
@@ -45,6 +45,8 @@ export default function AppCard({ app, onEdit, onDelete }: AppCardProps) {
                 return 'bg-accent-100 text-accent-600';
             case '창체':
                 return 'bg-secondary-100 text-secondary-500';
+            case '연수':
+                return 'bg-amber-100 text-amber-700';
             default:
                 return 'bg-gray-100 text-gray-600';
         }
@@ -58,6 +60,8 @@ export default function AppCard({ app, onEdit, onDelete }: AppCardProps) {
                 return '🏫';
             case '창체':
                 return '🎨';
+            case '연수':
+                return '🎓';
             default:
                 return '📱';
         }

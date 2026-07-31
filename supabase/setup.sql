@@ -8,7 +8,7 @@ create table public.apps (
   description text not null default '',
   thumbnail text not null default '',
   url text not null,
-  category text not null check (category in ('교과', '학급운영', '창체')),
+  category text not null check (category in ('교과', '학급운영', '창체', '연수')),
   tags text[] not null default '{}',
   created_at timestamptz not null default now()
 );

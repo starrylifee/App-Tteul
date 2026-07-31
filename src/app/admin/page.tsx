@@ -11,7 +11,7 @@ import {
 
 type AdminType = "vibe" | "official";
 
-const CATEGORIES = ["교과", "학급운영", "창체"] as const;
+const CATEGORIES = ["교과", "학급운영", "창체", "연수"] as const;
 
 const inputClass =
   "w-full px-3.5 py-2.5 rounded-xl border border-primary-100 bg-warm-50/20 text-sm text-foreground focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100 transition-colors";

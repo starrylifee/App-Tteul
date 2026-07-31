@@ -9,7 +9,7 @@ interface AppGalleryProps {
     onDelete?: (app: AppData) => void;
 }
 
-const categories = ['전체', '교과', '학급운영', '창체'] as const;
+const categories = ['전체', '교과', '학급운영', '창체', '연수'] as const;
 
 export default function AppGallery({ apps, onEdit, onDelete }: AppGalleryProps) {
     const [activeCategory, setActiveCategory] = useState<string>('전체');
@@ -44,6 +44,7 @@ export default function AppGallery({ apps, onEdit, onDelete }: AppGalleryProps) 
                             {category === '교과' && <img src="/category-curriculum.png" alt="" className="w-5 h-5 object-contain" />}
                             {category === '학급운영' && <img src="/category-classroom.png" alt="" className="w-5 h-5 object-contain" />}
                             {category === '창체' && <img src="/category_creative.png" alt="" className="w-5 h-5 object-contain" />}
+                            {category === '연수' && <span className="text-lg">🎓</span>}
                             {category}
                         </button>
                     ))}

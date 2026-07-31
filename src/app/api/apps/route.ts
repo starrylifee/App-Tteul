@@ -4,7 +4,7 @@ import { getSupabaseAdmin, THUMBNAIL_BUCKET } from "@/lib/supabaseAdmin";
 
 export const dynamic = "force-dynamic";
 
-const CATEGORIES = ["교과", "학급운영", "창체"] as const;
+const CATEGORIES = ["교과", "학급운영", "창체", "연수"] as const;
 
 const DEFAULT_THUMBNAILS = [
   "/defaults/sprout.svg",
