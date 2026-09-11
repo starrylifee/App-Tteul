@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import AppCard, { AppData } from './AppCard';
 
 interface AppGalleryProps {
@@ -11,12 +11,28 @@ interface AppGalleryProps {
 
 const categories = ['전체', '교과', '학급운영', '창체', '연수'] as const;
 
+// id가 클수록 나중에 등록된 앱이라 최신순 = id 내림차순
+const sortOptions = [
+    { key: 'newest', label: '최신순' },
+    { key: 'oldest', label: '등록순' },
+    { key: 'title', label: '가나다순' },
+] as const;
+
+type SortKey = (typeof sortOptions)[number]['key'];
+
 export default function AppGallery({ apps, onEdit, onDelete }: AppGalleryProps) {
     const [activeCategory, setActiveCategory] = useState<string>('전체');
+    const [sortKey, setSortKey] = useState<SortKey>('newest');
 
-    const filteredApps = activeCategory === '전체'
-        ? apps
-        : apps.filter(app => app.category === activeCategory);
+    const filteredApps = useMemo(() => {
+        const list = activeCategory === '전체'
+            ? [...apps]
+            : apps.filter(app => app.category === activeCategory);
+
+        if (sortKey === 'newest') return list.sort((a, b) => b.id - a.id);
+        if (sortKey === 'oldest') return list.sort((a, b) => a.id - b.id);
+        return list.sort((a, b) => a.title.localeCompare(b.title, 'ko'));
+    }, [apps, activeCategory, sortKey]);
 
     return (
         <section className="py-12 sm:py-16 px-4 bg-warm-50/30">
@@ -46,6 +62,23 @@ export default function AppGallery({ apps, onEdit, onDelete }: AppGalleryProps) 
                             {category === '창체' && <img src="/category_creative.png" alt="" className="w-5 h-5 object-contain" />}
                             {category === '연수' && <span className="text-lg">🎓</span>}
                             {category}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Sort filter */}
+                <div className="flex items-center justify-end gap-2 mb-6">
+                    <span className="text-sm text-warm-300 mr-1">정렬</span>
+                    {sortOptions.map((option) => (
+                        <button
+                            key={option.key}
+                            onClick={() => setSortKey(option.key)}
+                            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${sortKey === option.key
+                                ? 'bg-primary-100 text-primary-700 border border-primary-300'
+                                : 'bg-white text-warm-300 hover:text-primary-600 border border-primary-100'
+                                }`}
+                        >
+                            {option.label}
                         </button>
                     ))}
                 </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 
 export interface VibeItem {
   id: number;
@@ -66,7 +66,25 @@ function VibeAdminButtons({
   );
 }
 
+// id가 클수록 나중에 등록된 작품이라 최신순 = id 내림차순
+const sortOptions = [
+  { key: "newest", label: "최신순" },
+  { key: "oldest", label: "등록순" },
+  { key: "title", label: "가나다순" },
+] as const;
+
+type SortKey = (typeof sortOptions)[number]["key"];
+
 export default function VibeShindap({ items, onEdit, onDelete }: VibeShindapProps) {
+  const [sortKey, setSortKey] = useState<SortKey>("newest");
+
+  const sortedItems = useMemo(() => {
+    const list = [...items];
+    if (sortKey === "newest") return list.sort((a, b) => b.id - a.id);
+    if (sortKey === "oldest") return list.sort((a, b) => a.id - b.id);
+    return list.sort((a, b) => a.title.localeCompare(b.title, "ko"));
+  }, [items, sortKey]);
+
   return (
     <section className="py-12 sm:py-16 px-4 bg-warm-50/30 min-h-[60vh]">
       <div className="max-w-4xl mx-auto">
@@ -80,6 +98,26 @@ export default function VibeShindap({ items, onEdit, onDelete }: VibeShindapProp
           </p>
         </div>
 
+        {/* Sort filter */}
+        {items.length > 0 && (
+          <div className="flex items-center justify-end gap-2 mb-6">
+            <span className="text-sm text-warm-300 mr-1">정렬</span>
+            {sortOptions.map((option) => (
+              <button
+                key={option.key}
+                onClick={() => setSortKey(option.key)}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                  sortKey === option.key
+                    ? "bg-primary-100 text-primary-700 border border-primary-300"
+                    : "bg-white text-warm-300 hover:text-primary-600 border border-primary-100"
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Items list */}
         {items.length === 0 ? (
           <div className="text-center py-16">
@@ -92,7 +130,7 @@ export default function VibeShindap({ items, onEdit, onDelete }: VibeShindapProp
           </div>
         ) : (
           <div className="space-y-4">
-            {items.map((item, idx) => (
+            {sortedItems.map((item, idx) => (
               <div
                 key={item.id}
                 className="vibe-list-card"
