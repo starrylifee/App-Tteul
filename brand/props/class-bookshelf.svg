@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" data-slug="class-bookshelf">
+  <g id="left" data-name="도서 대출 날짜 도장" data-role="tool" data-form="object" data-why="읽기 시작한 날과 다 읽은 날을 찍어 남기는 앱 — 학급문고 대출·반납에 쓰는 날짜 도장(날짜 바퀴가 든 틀)이라 칭찬 도장과 다르다">
+    <ellipse cx="120" cy="232" rx="84" ry="8" fill="#DDD3BA"/>
+    <rect fill="#C9A066" x="64" y="116" width="112" height="60" rx="8"/>
+    <rect fill="#B07A55" x="112" y="56" width="16" height="40"/>
+    <path fill="#B07A55" d="M52 196 V104 A16 16 0 0 1 68 88 H172 A16 16 0 0 1 188 104 V196 H172 V110 A6 6 0 0 0 166 104 H74 A6 6 0 0 0 68 110 V196 Z"/>
+    <rect fill="#D08A6C" x="88" y="20" width="64" height="44" rx="22"/>
+    <rect fill="#D08A6C" x="44" y="192" width="152" height="32" rx="8"/>
+    <rect fill="#B07A55" x="40" y="216" width="160" height="16" rx="8"/>
+  </g>
+  <g id="right" data-name="학급 책장" data-role="stage" data-form="furniture" data-why="앱 이름 그대로의 무대 — 학급문고를 꽂아 두고 빈 칸을 완독으로 채워 가는 우리 반 책장">
+    <ellipse cx="360" cy="232" rx="92" ry="8" fill="#DDD3BA"/>
+    <rect fill="#D08A6C" x="308" y="72" width="24" height="64" rx="6"/>
+    <rect fill="#C9A066" x="332" y="80" width="22" height="56" rx="6"/>
+    <rect fill="#D08A6C" x="354" y="68" width="24" height="68" rx="6"/>
+    <rect fill="#C9A066" x="378" y="76" width="22" height="60" rx="6"/>
+    <rect fill="#D08A6C" x="308" y="158" width="24" height="66" rx="6"/>
+    <rect fill="#C9A066" x="332" y="164" width="20" height="60" rx="6"/>
+    <rect fill="#D08A6C" x="352" y="156" width="24" height="68" rx="6"/>
+    <path fill="#B07A55" fill-rule="evenodd" d="M290 40 H430 A10 10 0 0 1 440 50 V222 A10 10 0 0 1 430 232 H290 A10 10 0 0 1 280 222 V50 A10 10 0 0 1 290 40 Z M302 56 H418 A6 6 0 0 1 424 62 V122 A6 6 0 0 1 418 128 H302 A6 6 0 0 1 296 122 V62 A6 6 0 0 1 302 56 Z M302 144 H418 A6 6 0 0 1 424 150 V210 A6 6 0 0 1 418 216 H302 A6 6 0 0 1 296 210 V150 A6 6 0 0 1 302 144 Z"/>
+  </g>
+</svg>

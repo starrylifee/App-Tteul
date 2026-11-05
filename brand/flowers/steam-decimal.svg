@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" data-slug="steam-decimal" data-name="눈금 비커" data-leaves="on" data-silhouette="tall" data-main="F-INK">
+  <g id="full">
+    <path fill="#2E3640" d="M48 24 H196 A8 8 0 0 1 204 32 V40 A8 8 0 0 1 196 48 H192 V190 A24 24 0 0 1 168 214 H72 A24 24 0 0 1 48 190 V56 C44 52 38 50 32 50 A6 6 0 0 1 26.3 42 C28.6 35.4 38 24 48 24 Z"/>
+    <path fill="#FFF6E0" d="M68 50 H172 A6 6 0 0 1 178 56 V178 A12 12 0 0 1 166 190 H74 A12 12 0 0 1 62 178 V56 A6 6 0 0 1 68 50 Z"/>
+    <path fill="#3F7FC4" d="M62 142 H178 V178 A12 12 0 0 1 166 190 H74 A12 12 0 0 1 62 178 Z"/>
+    <rect fill="#2E3640" x="146" y="66" width="38" height="12" rx="6"/>
+    <rect fill="#2E3640" x="158" y="92" width="26" height="12" rx="6"/>
+    <rect fill="#2E3640" x="146" y="118" width="38" height="12" rx="6"/>
+    <circle fill="#FFF6E0" cx="100" cy="166" r="12"/>
+  </g>
+  <g id="small">
+    <path fill="#2E3640" d="M48 24 H184 A8 8 0 0 1 192 32 V190 A24 24 0 0 1 168 214 H72 A24 24 0 0 1 48 190 V68 C42 60 34 56 24 56 A8 8 0 0 1 16.3 45.9 C19 35 32 24 48 24 Z"/>
+    <path fill="#FFF6E0" d="M76 52 H164 A6 6 0 0 1 170 58 V174 A12 12 0 0 1 158 186 H82 A12 12 0 0 1 70 174 V58 A6 6 0 0 1 76 52 Z"/>
+    <path fill="#3F7FC4" d="M70 128 H170 V174 A12 12 0 0 1 158 186 H82 A12 12 0 0 1 70 174 Z"/>
+    <rect fill="#2E3640" x="142" y="72" width="36" height="24" rx="12"/>
+  </g>
+</svg>

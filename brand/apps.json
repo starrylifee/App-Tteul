@@ -1,0 +1,498 @@
+[
+ {
+  "id": 2,
+  "slug": "germany-change-clothes",
+  "title": "AI 옷 바꾸기",
+  "category": "교과",
+  "url": "https://germany-change-clothes.vercel.app/",
+  "thumbnail": "/ai_style_changer_thumbnail.png"
+ },
+ {
+  "id": 3,
+  "slug": "artlens-two",
+  "title": "미술 감상 · 관찰 · 프롬프트",
+  "category": "교과",
+  "url": "https://artlens-two.vercel.app/",
+  "thumbnail": "/art_observation_prompt_thumbnail.png"
+ },
+ {
+  "id": 4,
+  "slug": "ai-region-based-image-generator",
+  "title": "AI Region Drawing App",
+  "category": "교과",
+  "url": "https://ai-region-based-image-generator.vercel.app/",
+  "thumbnail": "/ai_region_drawing_thumbnail.png"
+ },
+ {
+  "id": 5,
+  "slug": "3-d-ai-democracy",
+  "title": "3D AI 민주시민 시뮬레이션",
+  "category": "교과",
+  "url": "https://3-d-ai-democracy.vercel.app/",
+  "thumbnail": "/democracy_simulation_thumbnail.png"
+ },
+ {
+  "id": 6,
+  "slug": "kidari-checker",
+  "title": "키다리샘 점검표",
+  "category": "학급운영",
+  "url": "https://kidari-checker.vercel.app/",
+  "thumbnail": "/kidari_checker_thumbnail.png"
+ },
+ {
+  "id": 7,
+  "slug": "next-class-one",
+  "title": "분반 작업 도우미",
+  "category": "학급운영",
+  "url": "https://next-class-one.vercel.app/",
+  "thumbnail": "/class_division_helper_thumbnail.png"
+ },
+ {
+  "id": 8,
+  "slug": "grownd-meta-qmaker",
+  "title": "퀴즈맵 생성기",
+  "category": "창체",
+  "url": "https://grownd-meta-qmaker.vercel.app/",
+  "thumbnail": "/quiz_map_thumbnail.png"
+ },
+ {
+  "id": 9,
+  "slug": "stb-eta",
+  "title": "봄·봄·봄",
+  "category": "교과",
+  "url": "https://stb-eta.vercel.app/",
+  "thumbnail": "/spring_art_thumbnail.png"
+ },
+ {
+  "id": 10,
+  "slug": "musicandmath",
+  "title": "리듬 분수 놀이",
+  "category": "교과",
+  "url": "https://musicandmath.vercel.app/",
+  "thumbnail": "/rhythm_fraction_thumbnail.png"
+ },
+ {
+  "id": 11,
+  "slug": "contour-line",
+  "title": "등고선 탐험 교실",
+  "category": "교과",
+  "url": "https://contour-line.vercel.app/",
+  "thumbnail": "/contour_line_thumbnail.png"
+ },
+ {
+  "id": 12,
+  "slug": "bignumber",
+  "title": "조 단위 숫자 읽기 퀴즈",
+  "category": "교과",
+  "url": "https://bignumber.vercel.app/",
+  "thumbnail": "/big_number_thumbnail.png"
+ },
+ {
+  "id": 13,
+  "slug": "guess-game",
+  "title": "수학 양감 어림 게임",
+  "category": "교과",
+  "url": "https://20251110-guessgame.vercel.app/",
+  "thumbnail": "/estimation_game_thumbnail.png"
+ },
+ {
+  "id": 14,
+  "slug": "metacog-unicorn",
+  "title": "메타인지 유니콘",
+  "category": "학급운영",
+  "url": "https://metacog-unicorn.vercel.app/",
+  "thumbnail": "/metacog_unicorn_thumbnail.png"
+ },
+ {
+  "id": 15,
+  "slug": "growndcard-english",
+  "title": "GROWND English",
+  "category": "교과",
+  "url": "https://growndcard-english.vercel.app/",
+  "thumbnail": "/grownd_english_thumbnail.png"
+ },
+ {
+  "id": 16,
+  "slug": "voicejump",
+  "title": "비명 지르는 닭",
+  "category": "창체",
+  "url": "https://voicejump.vercel.app/",
+  "thumbnail": "/voice_jump_thumbnail.png"
+ },
+ {
+  "id": 17,
+  "slug": "ezmaker-temp",
+  "title": "온도 챌린지 - EZMaker",
+  "category": "교과",
+  "url": "https://ezmaker-temp.vercel.app/",
+  "thumbnail": "/ezmaker_temp_thumbnail.png"
+ },
+ {
+  "id": 18,
+  "slug": "digitalfootprint-ruby",
+  "title": "디지털 발자국 히어로즈",
+  "category": "창체",
+  "url": "https://digitalfootprint-ruby.vercel.app/",
+  "thumbnail": "/digital_footprint_thumbnail.png"
+ },
+ {
+  "id": 19,
+  "slug": "book-timer-wine",
+  "title": "북타이머",
+  "category": "학급운영",
+  "url": "https://book-timer-wine.vercel.app/",
+  "thumbnail": "/book_timer_thumbnail.png"
+ },
+ {
+  "id": 20,
+  "slug": "tuttle-run",
+  "title": "거북이 학교 보물찾기",
+  "category": "창체",
+  "url": "https://tuttle-run.vercel.app/",
+  "thumbnail": "/tuttle.png"
+ },
+ {
+  "id": 21,
+  "slug": "steam-angle",
+  "title": "STEAM 각도 놀이터",
+  "category": "교과",
+  "url": "https://steam-angle.vercel.app/",
+  "thumbnail": "/angle.png"
+ },
+ {
+  "id": 22,
+  "slug": "grownd-minigame",
+  "title": "그라운드 미니게임",
+  "category": "창체",
+  "url": "https://grownd-minigame.vercel.app/",
+  "thumbnail": "/grownd_minigame_thumbnail.png"
+ },
+ {
+  "id": 23,
+  "slug": "vibe-shindap",
+  "title": "바이브신답",
+  "category": "창체",
+  "url": "https://padlet.com/shindapcho/padlet-zssgcqkrclm4kd3m",
+  "thumbnail": "/vibe_shindap_thumbnail.png"
+ },
+ {
+  "id": 24,
+  "slug": "sensor-vibe",
+  "title": "센서 바이브 - EZMaker",
+  "category": "창체",
+  "url": "https://sensor-vibe.vercel.app/",
+  "thumbnail": "/sensor_vibe_thumbnail.png"
+ },
+ {
+  "id": 25,
+  "slug": "metacog-unicorn-imagegen",
+  "title": "메타인지 유니콘 이미지 생성",
+  "category": "교과",
+  "url": "https://metacog-unicorn-imagegen.vercel.app/",
+  "thumbnail": "/metacog_imagegen_thumbnail.png"
+ },
+ {
+  "id": 26,
+  "slug": "today-learning-bot",
+  "title": "오늘 배움봇",
+  "category": "학급운영",
+  "url": "https://20260424-metacog-2-shindayun.vercel.app/",
+  "thumbnail": "/today_learning_bot_thumbnail.png"
+ },
+ {
+  "id": 27,
+  "slug": "steam-push",
+  "title": "STEAM 도형 밀기 나라",
+  "category": "교과",
+  "url": "https://steam-push.vercel.app/",
+  "thumbnail": "/steam_push_thumbnail.png"
+ },
+ {
+  "id": 28,
+  "slug": "steam-graph",
+  "title": "막대그래프 STEAM 게임",
+  "category": "교과",
+  "url": "https://steam-graph.vercel.app/",
+  "thumbnail": "/steam_graph.png"
+ },
+ {
+  "id": 29,
+  "slug": "shindapkidsmap",
+  "title": "신답 키즈 맵",
+  "category": "창체",
+  "url": "https://shindapkidsmap.vercel.app/",
+  "thumbnail": "/shindapkidsmap.png"
+ },
+ {
+  "id": 30,
+  "slug": "steam-4-1-push",
+  "title": "수학 도형 밀기 게임",
+  "category": "교과",
+  "url": "https://steam-4-1-push.vercel.app/",
+  "thumbnail": "/4-1push.png"
+ },
+ {
+  "id": 31,
+  "slug": "nfc-exercise-games",
+  "title": "운동 미션 · NFC 체육 게임",
+  "category": "교과",
+  "url": "https://nfc-exercise-games.vercel.app/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/nfc_exercise_thumbnail.webp"
+ },
+ {
+  "id": 32,
+  "slug": "steam-rules",
+  "title": "수학 규칙 아케이드",
+  "category": "교과",
+  "url": "https://steam-rules.vercel.app/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/steam_rules_arcade_thumbnail.webp"
+ },
+ {
+  "id": 33,
+  "slug": "shindap-rullet",
+  "title": "신답룰렛",
+  "category": "학급운영",
+  "url": "https://shindap-rullet.vercel.app/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/shindap_rullet_thumbnail.webp"
+ },
+ {
+  "id": 34,
+  "slug": "seoul-edu-rullet",
+  "title": "서울교육룰렛",
+  "category": "학급운영",
+  "url": "https://seoul-edu-rullet.vercel.app/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/seoul_edu_rullet_thumbnail.webp"
+ },
+ {
+  "id": 35,
+  "slug": "mycl-contest",
+  "title": "에듀앱 빌더",
+  "category": "창체",
+  "url": "https://mycl-contest.vercel.app/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/eduapp_builder_thumbnail.webp"
+ },
+ {
+  "id": 37,
+  "slug": "total-visual-art",
+  "title": "봄·봄·봄 스튜디오",
+  "category": "교과",
+  "url": "https://total-visual-art.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/bom_studio_thumbnail.webp"
+ },
+ {
+  "id": 38,
+  "slug": "patent-maker",
+  "title": "특허 체험기",
+  "category": "창체",
+  "url": "https://patent-maker.vercel.app/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/patent_maker_thumbnail.webp"
+ },
+ {
+  "id": 40,
+  "slug": "steam-economic-game",
+  "title": "신답 경제 게임랩",
+  "category": "교과",
+  "url": "https://steam-economic-game.vercel.app/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/steam_economic_game_thumbnail.webp"
+ },
+ {
+  "id": 41,
+  "slug": "art-language",
+  "title": "예술의 언어",
+  "category": "교과",
+  "url": "https://art-language.vercel.app/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/art_language_thumbnail.webp"
+ },
+ {
+  "id": 42,
+  "slug": "aiteacher26",
+  "title": "교실혁명 집합연수 도구 모음",
+  "category": "연수",
+  "url": "https://aiteacher26.vercel.app/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/aiteacher26_thumbnail.webp"
+ },
+ {
+  "id": 43,
+  "slug": "alpha-centauri-zeta",
+  "title": "프록시마 구조 작전",
+  "category": "교과",
+  "url": "https://alpha-centauri-zeta.vercel.app/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/proxima_rescue_thumbnail.webp"
+ },
+ {
+  "id": 44,
+  "slug": "uriban-board",
+  "title": "우리반 보드",
+  "category": "학급운영",
+  "url": "https://uriban-board.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1787286045260.webp"
+ },
+ {
+  "id": 45,
+  "slug": "kkeutmalitgi",
+  "title": "AI 끝말잇기",
+  "category": "교과",
+  "url": "https://kkeutmalitgi.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1787286168511.webp"
+ },
+ {
+  "id": 46,
+  "slug": "knn-lab",
+  "title": "KNN 땅따먹기",
+  "category": "교과",
+  "url": "https://knn-lab.vercel.app/game.html",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1787286187462.webp"
+ },
+ {
+  "id": 47,
+  "slug": "hangul-typing-xi",
+  "title": "한글 타자 연습",
+  "category": "창체",
+  "url": "https://hangul-typing-xi.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1787286145934.webp"
+ },
+ {
+  "id": 48,
+  "slug": "todaystar-kr",
+  "title": "별볼일",
+  "category": "교과",
+  "url": "https://todaystar-kr.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1787286056436.webp"
+ },
+ {
+  "id": 49,
+  "slug": "moving-drawings",
+  "title": "움직이는 그림 극장",
+  "category": "교과",
+  "url": "https://moving-drawings.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1787286262728.webp"
+ },
+ {
+  "id": 50,
+  "slug": "milk-check",
+  "title": "우유 먹어라",
+  "category": "학급운영",
+  "url": "https://milk-check.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1787393492752.webp"
+ },
+ {
+  "id": 51,
+  "slug": "science-star",
+  "title": "우주 탐험대! 밤하늘 관찰 시뮬레이션",
+  "category": "교과",
+  "url": "https://science-star.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1788824836136.webp"
+ },
+ {
+  "id": 52,
+  "slug": "steam-fraction-game",
+  "title": "신답 분수 게임 공책",
+  "category": "교과",
+  "url": "https://steam-fraction-game.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1788824800340.webp"
+ },
+ {
+  "id": 53,
+  "slug": "woos-program",
+  "title": "해산물과 소고기의 게임 공방",
+  "category": "교과",
+  "url": "https://woos-program.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1788824825960.webp"
+ },
+ {
+  "id": 54,
+  "slug": "drawing-worlds",
+  "title": "그림 속 월드",
+  "category": "교과",
+  "url": "https://drawing-worlds-20260907.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1788825137885.webp"
+ },
+ {
+  "id": 55,
+  "slug": "urinecut",
+  "title": "우리네컷",
+  "category": "학급운영",
+  "url": "https://urinecut.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1789037782212.webp"
+ },
+ {
+  "id": 56,
+  "slug": "deskcat-solar-api",
+  "title": "치즈와 잠깐",
+  "category": "연수",
+  "url": "https://deskcat-solar-api.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1789255397157.webp"
+ },
+ {
+  "id": 57,
+  "slug": "steam-triangle-game",
+  "title": "세모 게임실",
+  "category": "교과",
+  "url": "https://steam-triangle-game.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1790824727726.webp"
+ },
+ {
+  "id": 58,
+  "slug": "grownd-claw",
+  "title": "그라운드 인형뽑기",
+  "category": "학급운영",
+  "url": "https://grownd-claw.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1790908783021.webp"
+ },
+ {
+  "id": 59,
+  "slug": "urisky",
+  "title": "우리동네 관측지",
+  "category": "교과",
+  "url": "https://urisky.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1791206856165.webp"
+ },
+ {
+  "id": 60,
+  "slug": "read-the-story",
+  "title": "Read the Story",
+  "category": "교과",
+  "url": "https://read-the-story.vercel.app/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1791784726960.webp"
+ },
+ {
+  "id": 61,
+  "slug": "startrail",
+  "title": "별결 · Startrail",
+  "category": "교과",
+  "url": "https://startrail-mobile.starrylife.chatgpt.site",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1792019580978.webp"
+ },
+ {
+  "id": 62,
+  "slug": "starfinder",
+  "title": "별길 · Starfinder",
+  "category": "교과",
+  "url": "https://starfinder-field.starrylife.chatgpt.site/",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1792291697378.webp"
+ },
+ {
+  "id": 63,
+  "slug": "nextyear",
+  "title": "학사일정·수업시수 계산기",
+  "category": "학급운영",
+  "url": "https://nextyear.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1792833704858.webp"
+ },
+ {
+  "id": 64,
+  "slug": "steam-decimal",
+  "title": "소수의 작업실",
+  "category": "교과",
+  "url": "https://steam-decimal-20261026.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1793066659981.webp"
+ },
+ {
+  "id": 65,
+  "slug": "class-bookshelf",
+  "title": "우리 반 책장",
+  "category": "학급운영",
+  "url": "https://class-bookshelf-seven.vercel.app",
+  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1793246107812.webp"
+ }
+]

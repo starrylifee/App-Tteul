@@ -1,0 +1,6 @@
+{
+  "교과": { "key": "subject", "POT": "#CE6E42", "POT_SHADE": "#A65A3A", "TILE": "#F8E5D9" },
+  "학급운영": { "key": "class", "POT": "#E8B33A", "POT_SHADE": "#B8861F", "TILE": "#FAF0D2" },
+  "창체": { "key": "activity", "POT": "#296374", "POT_SHADE": "#1E4A57", "TILE": "#DCECEF" },
+  "연수": { "key": "training", "POT": "#32363D", "POT_SHADE": "#1F2227", "TILE": "#E4E6EA" }
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" data-slug="steam-decimal">
+  <g id="left" data-name="시험관 꽂이" data-role="tool" data-form="instrument" data-why="소수의 작업실에서 양을 0.1 단위로 나눠 담는 실험 도구 — 관마다 채운 높이가 3/10·6/10·9/10을 말한다">
+    <ellipse cx="120" cy="232" rx="96" ry="8" fill="#DDD3BA"/>
+    <path fill="#7F8D9C" d="M62 40 H82 A6 6 0 0 1 88 46 V192 A16 16 0 0 1 56 192 V46 A6 6 0 0 1 62 40 Z"/>
+    <path fill="#7F8D9C" d="M110 40 H130 A6 6 0 0 1 136 46 V192 A16 16 0 0 1 104 192 V46 A6 6 0 0 1 110 40 Z"/>
+    <path fill="#7F8D9C" d="M158 40 H178 A6 6 0 0 1 184 46 V192 A16 16 0 0 1 152 192 V46 A6 6 0 0 1 158 40 Z"/>
+    <path fill="#D08A6C" d="M56 158 H88 V192 A16 16 0 0 1 56 192 Z"/>
+    <path fill="#D08A6C" d="M104 107 H136 V192 A16 16 0 0 1 104 192 Z"/>
+    <path fill="#D08A6C" d="M152 57 H184 V192 A16 16 0 0 1 152 192 Z"/>
+    <rect fill="#9A6448" x="24" y="72" width="192" height="16" rx="8"/>
+    <rect fill="#9A6448" x="24" y="208" width="192" height="24" rx="8"/>
+    <rect fill="#9A6448" x="24" y="72" width="16" height="160" rx="8"/>
+    <rect fill="#9A6448" x="200" y="72" width="16" height="160" rx="8"/>
+  </g>
+  <g id="right" data-name="10칸 부품 상자" data-role="result" data-form="object" data-why="작업실에서 부품을 10칸 가운데 7칸에 채워 0.7을 만든 결과물 — 손잡이 달린 작업실 정리 상자">
+    <ellipse cx="360" cy="232" rx="104" ry="8" fill="#DDD3BA"/>
+    <path fill="none" stroke="#9A6448" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="M318 120 V92 H402 V120"/>
+    <rect fill="#9A6448" x="250" y="120" width="220" height="112" rx="10"/>
+    <rect fill="#D08A6C" x="266" y="140" width="28" height="28" rx="6"/>
+    <rect fill="#D08A6C" x="306" y="140" width="28" height="28" rx="6"/>
+    <rect fill="#D08A6C" x="346" y="140" width="28" height="28" rx="6"/>
+    <rect fill="#D08A6C" x="386" y="140" width="28" height="28" rx="6"/>
+    <rect fill="#D08A6C" x="426" y="140" width="28" height="28" rx="6"/>
+    <rect fill="#D08A6C" x="266" y="180" width="28" height="28" rx="6"/>
+    <rect fill="#D08A6C" x="306" y="180" width="28" height="28" rx="6"/>
+    <rect fill="#FBF4E6" x="346" y="180" width="28" height="28" rx="6"/>
+    <rect fill="#FBF4E6" x="386" y="180" width="28" height="28" rx="6"/>
+    <rect fill="#FBF4E6" x="426" y="180" width="28" height="28" rx="6"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+{
+  "name": "apptteul-brand",
+  "private": true,
+  "type": "module",
+  "description": "앱뜰 브랜드 아이콘·썸네일 생성기 (앱 본체 빌드와 무관)",
+  "scripts": {
+    "build": "node build.mjs",
+    "review": "node review.mjs"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "playwright": "1.58.2"
+  }
+}
