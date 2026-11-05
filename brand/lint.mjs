@@ -307,7 +307,7 @@ export const lintProps = (slug) => {
     if (Math.min(w, h) < 72) err(`#${side} 짧은 변 ${r(Math.min(w, h))} < 72`);
     if (Math.abs(m.box.y1 - 232) > 2) err(`#${side} 바닥 y ${r(m.box.y1)} — 232±2 (땅에 서야 한다)`);
     if (m.box.y0 < 16 || m.box.y0 > 84) err(`#${side} 윗끝 y ${r(m.box.y0)} — 16~84 (소품 키를 비슷하게 맞춘다)`);
-    if (m.box.y0 >= 44 && m.box.y0 <= 70) warn(`#${side} 윗끝 y ${r(m.box.y0)} — 와이드 땅선(y 440)과 거의 닿는다(소품 y 44~70 피하기)`);
+    if (m.box.y0 >= 44 && m.box.y0 <= 70) warn(`#${side} 윗끝 y ${r(m.box.y0)} — 와이드 y 317~353, 먼 언덕 윤곽선과 겹쳐 접선이 생긴다(소품 y 44~70 피하기)`);
     if (shadowOk) {
       const rx = Number(first[2].match(/rx="([\d.]+)"/)?.[1]);
       if (rx > w / 2 + 12) warn(`#${side} 그림자 rx ${rx} > 폭/2+12 (${r(w / 2 + 12)})`);
