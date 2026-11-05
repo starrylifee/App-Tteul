@@ -49,7 +49,8 @@ const svg = (w, h, body) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 
 
 // 배치 계약 (BRAND.md 3장). 화분 밑동은 틀 밖으로 잘린다.
 const CLOSEUP_L = "translate(-76.8 -32) scale(1.3)"; // L판: 꽃 위끝 y 20, 화분 테두리 y 405~457, 몸통은 아래 가장자리에서 잘림
-const HEAD_S = "translate(-8 9.6) scale(2.2)"; // S판(48 이하): 꽃 머리만 타일 가운데에 가득(머리 x·y 45~467)
+// S판(16·32·48·favicon.svg): 작으면 꽃 가운데 그림이 뭉개져서 꽃 대신 꽃잎 색 둥근 타일에 크림색 그림만 크게 넣는다(사용자 결정 2026-11-05)
+const SMALL_RX = 96, SMALL_PIC = 400; // 타일 모서리 96, 그림 400칸(여백 56)
 const WIDE_HERO = "translate(-84 49.75) scale(1.5)"; // 와이드: 꽃을 왼쪽으로(머리 중심 x 약 300)
 const WIDE_HEAD = 1.25; // 와이드에서는 꽃 머리만 꽃받침 밑(꽃 좌표 120,226)을 기준으로 더 키운다
 const TEXT_X = 590, TEXT_MAXW = 540, TEXT_MID = 300; // 이름 칸: x 590~1130, 세로 가운데 y 300
@@ -146,7 +147,9 @@ export const compose = (slug) => {
   const tileClip = `<defs><clipPath id="tile-clip"><rect width="512" height="512" rx="{TILE_RX}"/></clipPath></defs>`;
   const inTile = (transform, body) => `${tileClip}${P.tile}<g clip-path="url(#tile-clip)"><g transform="${transform}">${body}</g></g>`;
   const iconL = (rx) => fill(svg(512, 512, inTile(CLOSEUP_L, plantL(head))), { ...cat, TILE_RX: rx });
-  const iconS = fill(svg(512, 512, inTile(HEAD_S, head)), { ...cat, TILE_RX: 96 });
+  const petal = SLOTS[spec.petal], cream = SLOTS["F-CREAM"], m = (512 - SMALL_PIC) / 2;
+  const iconS = svg(512, 512, `<rect width="512" height="512" rx="${SMALL_RX}" fill="${petal}"/>` +
+    `<g data-slug="${spec.slug}" transform="translate(${m} ${m}) scale(${SMALL_PIC / 256})" fill="${cream}">${iconBody(spec.icon, cream, petal)}</g>`);
   const wide = fill(svg(1200, 630, P.garden + `<g transform="${WIDE_HERO}">${plantL(head, WIDE_HEAD)}</g>` + titleText(title)), cat);
   return { app, spec, title, iconL112: iconL(112), iconL0: iconL(0), iconS, wide };
 };
