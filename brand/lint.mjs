@@ -176,7 +176,7 @@ const ROLES = ["tool", "stage", "result"];
 // 소품 생김새 갈래. 앱 결과물은 대개 판·화면이라 board가 넘치기 쉽다 → 한 장면에 하나, 카테고리 안에서 30% 이하
 export const FORMS = ["board", "vessel", "instrument", "furniture", "object"];
 // 아무 앱에나 들어가는 사물 — 앱의 핵심 그 자체일 때만 data-why를 적고 쓴다 (9-3)
-const GENERIC = ["연필", "공책", "책", "컴퓨터", "노트북", "태블릿", "크롬북", "휴대폰", "칠판", "전자칠판", "전구", "트로피", "메달", "별", "하트", "화살표", "시계", "돋보기", "지구본", "선물 상자", "로켓", "화분", "나무", "풀"];
+const GENERIC = ["연필", "공책", "책", "컴퓨터", "노트북", "태블릿", "크롬북", "휴대폰", "칠판", "전자칠판", "전구", "트로피", "메달", "별", "하트", "화살표", "시계", "돋보기", "지구본", "선물 상자", "로켓", "화분", "나무", "풀", "달력", "종", "알림종", "스티커판", "체크리스트", "타이머", "모니터", "가방", "상자"];
 
 const lin = (c) => { c /= 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
 const luminance = (hex) => { const [r, g, b] = hexToRgb(hex).map(lin); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
@@ -350,7 +350,8 @@ export const lintProps = (slug) => {
   const others = allPropNames().filter(([s]) => s !== slug);
   for (const s of [L, R].filter(Boolean)) {
     for (const [fs, fn] of Object.entries(fnames)) if (fn && norm(fn) === norm(s.name)) err(`소품 "${s.name}"이 ${fs === slug ? "이 앱" : fs}의 꽃 상징과 같다`);
-    if (GENERIC.some((g) => norm(s.name) === norm(g))) warn(`"${s.name}"은 범용 사물 — 이 앱의 핵심일 때만 쓴다(data-why 확인)`);
+    const hit = GENERIC.find((g) => norm(s.name) === norm(g) || norm(s.name).endsWith(norm(g)));
+    if (hit) warn(`"${s.name}"은 범용 사물(${hit}) — 다른 앱에도 그대로 들어간다. 이 앱의 핵심일 때만 쓰고 data-why에 이유를 적는다`);
     const dup = others.find(([, n]) => norm(n) === norm(s.name));
     if (dup) warn(`"${s.name}" 소품이 ${dup[0]}에도 있다 (같은 family가 아니면 바꾼다)`);
   }
