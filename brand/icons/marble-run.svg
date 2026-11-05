@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<!-- 신답룰렛: 비탈 두 개를 굴러 내려와 마지막 비탈 끝에서 떨어지려는 구슬 -->
+<path d="M40 84 L184 118" stroke="{INK}" stroke-width="18" stroke-linecap="round" fill="none"/>
+<path d="M216 152 L84 186" stroke="{INK}" stroke-width="18" stroke-linecap="round" fill="none"/>
+<circle cx="112" cy="76" r="22" fill="{INK}"/>
+<circle cx="78" cy="156" r="22" fill="{INK}"/>
+</svg>

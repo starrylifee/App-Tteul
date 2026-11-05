@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<!-- 그라운드 인형뽑기: 인형뽑기 집게(줄·몸통·세 갈래). 잡힌 공은 넣지 않는다 — 공+집게가 사람 얼굴로 읽혔다 -->
+<rect x="118" y="2" width="20" height="56" rx="8" fill="{INK}"/>
+<path d="M80 100 Q80 50 128 50 Q176 50 176 100 Z" fill="{INK}"/>
+<rect x="72" y="92" width="112" height="24" rx="10" fill="{INK}"/>
+<path d="M92 112 C50 136 34 184 62 220 L84 228" stroke="{INK}" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M164 112 C206 136 222 184 194 220 L172 228" stroke="{INK}" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M128 116 V190 L140 202" stroke="{INK}" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

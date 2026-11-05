@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<!-- 움직이는 그림 극장: 십자 조종대에 실로 매단 나무 인형(얼굴 없음). 사람 형상 예외 — 사용자 승인 2026-11-05 -->
+<path d="M62 38 L74 124 M194 38 L182 124 M128 80 L128 96" stroke="{INK}" stroke-width="8" stroke-linecap="round" fill="none"/>
+<rect x="50" y="28" width="156" height="20" rx="10" fill="{INK}"/>
+<rect x="118" y="10" width="20" height="76" rx="10" fill="{INK}"/>
+<circle cx="128" cy="116" r="22" fill="{INK}"/>
+<rect x="106" y="144" width="44" height="52" rx="14" fill="{INK}"/>
+<path d="M112 154 L78 126 M144 154 L178 126 M116 194 L104 232 M140 194 L152 232" stroke="{INK}" stroke-width="16" stroke-linecap="round" fill="none"/>
+</svg>

@@ -8,6 +8,7 @@
     "review": "node review.mjs"
   },
   "dependencies": {
+    "@phosphor-icons/core": "^2.1.1",
     "@resvg/resvg-js": "^2.6.2",
     "playwright": "1.58.2"
   }

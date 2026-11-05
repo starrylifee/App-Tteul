@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<!-- 북타이머: 펼친 책 위에 선 스톱워치. 스톱워치는 Phosphor Icons timer(MIT) 모양을 줄여 씀 -->
+<path d="M20 150 Q72 132 122 152 V236 Q72 218 20 232 Z M236 150 Q184 132 134 152 V236 Q184 218 236 232 Z" fill="{INK}" stroke="{INK}" stroke-width="8" stroke-linejoin="round"/>
+<circle cx="128" cy="92" r="62" fill="{CREAM}"/>
+<rect x="96" y="4" width="64" height="26" rx="13" fill="{CREAM}"/>
+<g transform="translate(64 20) scale(0.5)"><path d="M128,40a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,40Zm45.66,61.66-40,40a8,8,0,0,1-11.32-11.32l40-40a8,8,0,0,1,11.32,11.32ZM96,16a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,16Z" fill="{INK}" transform="translate(0 -16)"/></g>
+</svg>
