@@ -9,7 +9,8 @@ import { Resvg } from "@resvg/resvg-js";
 import { build, compose } from "./build.mjs";
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
-const OUT = join(ROOT, "out", "_review");
+// REVIEW_OUT 환경변수로 시트 폴더를 바꿀 수 있다(여러 작업이 동시에 돌 때 덮어쓰지 않게)
+const OUT = process.env.REVIEW_OUT ? join(ROOT, process.env.REVIEW_OUT) : join(ROOT, "out", "_review");
 mkdirSync(OUT, { recursive: true });
 
 const slugs = process.argv.slice(2).length

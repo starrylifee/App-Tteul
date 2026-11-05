@@ -220,7 +220,24 @@ const measureProp = (body) => {
     });
     if (border) { edge++; if (PROP_ANCHORS.includes(k)) edgeAnchor++; }
   }
-  return { area: n, box: { x0: minX / scale, y0: minY / scale, x1: (maxX + 1) / scale, y1: (maxY + 1) / scale }, edgeAnchor: edge ? edgeAnchor / edge : 0, bySlot };
+  // 연결 성분: 바닥(y 228 아래)에 닿지 않는 덩어리는 떠 있는 요소다
+  const seen = new Uint8Array(W * H);
+  let floating = 0;
+  for (let start = 0; start < W * H; start++) {
+    if (seen[start] || px[start * 4 + 3] < 128) continue;
+    const stack = [start]; seen[start] = 1;
+    let size = 0, grounded = false;
+    while (stack.length) {
+      const k = stack.pop(); size++;
+      const x = k % W, y = (k - x) / W;
+      if (y >= 228 * scale) grounded = true;
+      for (const nk of [x > 0 ? k - 1 : -1, x < W - 1 ? k + 1 : -1, y > 0 ? k - W : -1, y < H - 1 ? k + W : -1]) {
+        if (nk >= 0 && !seen[nk] && px[nk * 4 + 3] >= 128) { seen[nk] = 1; stack.push(nk); }
+      }
+    }
+    if (!grounded && size > 40) floating++;
+  }
+  return { area: n, box: { x0: minX / scale, y0: minY / scale, x1: (maxX + 1) / scale, y1: (maxY + 1) / scale }, edgeAnchor: edge ? edgeAnchor / edge : 0, bySlot, floating };
 };
 
 /** 모든 꽃 상징 이름 (정체성 검사용) */
@@ -313,6 +330,8 @@ export const lintProps = (slug) => {
       if (rx > w / 2 + 12) warn(`#${side} 그림자 rx ${rx} > 폭/2+12 (${r(w / 2 + 12)})`);
     }
     if (m.edgeAnchor < 0.5) err(`#${side} 외곽 앵커색 ${r(m.edgeAnchor * 100)}% < 50%`);
+    if (m.floating) err(`#${side} 떠 있는 요소 ${m.floating}개 — 모든 덩어리가 바닥(y 232)까지 이어져야 한다(공·점은 받침이나 판 위에 얹는다)`);
+    if (/transform="[^"]*(rotate|skew|matrix)/.test(shape) && !/data-tilt="/.test(open)) err(`#${side} 기울인 도형(rotate·skew) — 정면·옆면만 쓴다. 방향이 뜻인 사물(망원경 등)만 그룹에 data-tilt="이유"를 달고 허용`);
     const nonPaper = Object.entries(m.bySlot).filter(([k]) => k !== "P-PAPER").sort((a, b) => b[1] - a[1]);
     const main = nonPaper[0]?.[0];
     sides[side] = { name, role, form, area: m.area / 4, height: h, main, bySlot: m.bySlot, colors };
