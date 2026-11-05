@@ -361,8 +361,10 @@ export const lintProps = (slug) => {
   const propColors = [...fileColors];
   if (propColors.length && flowerColors.length) {
     const maxC = (cs) => Math.max(...cs.map(chroma)), maxK = (cs) => Math.max(...cs.map((c) => contrast(c, GROUND)));
-    if (maxC(propColors) >= maxC(flowerColors)) err(`소품 최대 채도 ${r(maxC(propColors))} ≥ 꽃 ${r(maxC(flowerColors))}`);
-    if (maxK(propColors) > 0.75 * maxK(flowerColors)) err(`소품 최대 대비 ${maxK(propColors).toFixed(2)} > 꽃의 0.75배 ${(0.75 * maxK(flowerColors)).toFixed(2)}`);
+    // 꽃이 짙은 무채색 계열(남색·먹색·크림, 최대 채도 40 미만)이면 꽃의 위계는 명도 대비가 맡는다 — 채도 비교는 참고로만
+    if (maxC(propColors) >= maxC(flowerColors)) (maxC(flowerColors) >= 40 ? err : warn)(`소품 최대 채도 ${r(maxC(propColors))} ≥ 꽃 ${r(maxC(flowerColors))}${maxC(flowerColors) < 40 ? " (꽃이 무채색 계열이라 대비 규칙으로 판정)" : ""}`);
+    // 흑백에서 소품이 꽃보다 진하지 않으면 된다(0.75배는 중간 명도 꽃에서 소품 앵커색을 전부 막아 버려 1배로 바꿈)
+    if (maxK(propColors) > maxK(flowerColors)) err(`소품 최대 대비 ${maxK(propColors).toFixed(2)} > 꽃 ${maxK(flowerColors).toFixed(2)} — 흑백에서 소품이 꽃보다 진하다`);
   }
   // 12. 정체성: 꽃 상징·다른 앱 소품과 겹침
   const fnames = flowerNames();
