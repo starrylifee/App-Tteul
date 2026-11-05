@@ -74,8 +74,8 @@ export default function AppCard({ app, onEdit, onDelete }: AppCardProps) {
             rel="noopener noreferrer"
             className="card-hover block bg-white rounded-2xl overflow-hidden shadow-md border border-primary-50 group"
         >
-            {/* Thumbnail */}
-            <div className="relative h-48 bg-gradient-to-br from-primary-50 to-accent-50 overflow-hidden">
+            {/* Thumbnail: 카톡 OG와 같은 1200×630 비율. 높이만 고정하면 화면 너비마다 좌우가 다르게 잘린다. */}
+            <div className="relative aspect-[1200/630] bg-gradient-to-br from-primary-50 to-accent-50 overflow-hidden">
                 {app.thumbnail ? (
                     <img
                         src={app.thumbnail}
