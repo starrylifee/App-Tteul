@@ -494,5 +494,13 @@
   "category": "학급운영",
   "url": "https://class-bookshelf-seven.vercel.app",
   "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1793246107812.webp"
+ },
+ {
+  "id": 66,
+  "slug": "steam-club",
+  "title": "4학년 STEAM 클럽",
+  "category": "교과",
+  "url": "https://steam-club-2026.vercel.app/",
+  "thumbnail": ""
  }
 ]
