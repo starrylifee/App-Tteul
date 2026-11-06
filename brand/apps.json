@@ -152,14 +152,6 @@
   "thumbnail": "/tuttle.png"
  },
  {
-  "id": 21,
-  "slug": "steam-angle",
-  "title": "STEAM 각도 놀이터",
-  "category": "교과",
-  "url": "https://steam-angle.vercel.app/",
-  "thumbnail": "/angle.png"
- },
- {
   "id": 22,
   "slug": "grownd-minigame",
   "title": "그라운드 미니게임",
@@ -174,14 +166,6 @@
   "category": "창체",
   "url": "https://padlet.com/shindapcho/padlet-zssgcqkrclm4kd3m",
   "thumbnail": "/vibe_shindap_thumbnail.png"
- },
- {
-  "id": 24,
-  "slug": "sensor-vibe",
-  "title": "센서 바이브 - EZMaker",
-  "category": "창체",
-  "url": "https://sensor-vibe.vercel.app/",
-  "thumbnail": "/sensor_vibe_thumbnail.png"
  },
  {
   "id": 25,
@@ -200,22 +184,6 @@
   "thumbnail": "/today_learning_bot_thumbnail.png"
  },
  {
-  "id": 27,
-  "slug": "steam-push",
-  "title": "STEAM 도형 밀기 나라",
-  "category": "교과",
-  "url": "https://steam-push.vercel.app/",
-  "thumbnail": "/steam_push_thumbnail.png"
- },
- {
-  "id": 28,
-  "slug": "steam-graph",
-  "title": "막대그래프 STEAM 게임",
-  "category": "교과",
-  "url": "https://steam-graph.vercel.app/",
-  "thumbnail": "/steam_graph.png"
- },
- {
   "id": 29,
   "slug": "shindapkidsmap",
   "title": "신답 키즈 맵",
@@ -224,28 +192,12 @@
   "thumbnail": "/shindapkidsmap.png"
  },
  {
-  "id": 30,
-  "slug": "steam-push-4",
-  "title": "수학 도형 밀기 게임",
-  "category": "교과",
-  "url": "https://steam-4-1-push.vercel.app/",
-  "thumbnail": "/4-1push.png"
- },
- {
   "id": 31,
   "slug": "nfc-exercise-games",
   "title": "운동 미션 · NFC 체육 게임",
   "category": "교과",
   "url": "https://nfc-exercise-games.vercel.app/",
   "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/nfc_exercise_thumbnail.webp"
- },
- {
-  "id": 32,
-  "slug": "steam-rules",
-  "title": "수학 규칙 아케이드",
-  "category": "교과",
-  "url": "https://steam-rules.vercel.app/",
-  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/steam_rules_arcade_thumbnail.webp"
  },
  {
   "id": 33,
@@ -286,14 +238,6 @@
   "category": "창체",
   "url": "https://patent-maker.vercel.app/",
   "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/patent_maker_thumbnail.webp"
- },
- {
-  "id": 40,
-  "slug": "steam-economic-game",
-  "title": "신답 경제 게임랩",
-  "category": "교과",
-  "url": "https://steam-economic-game.vercel.app/",
-  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/steam_economic_game_thumbnail.webp"
  },
  {
   "id": 41,
@@ -384,14 +328,6 @@
   "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1788824836136.webp"
  },
  {
-  "id": 52,
-  "slug": "steam-fraction-game",
-  "title": "신답 분수 게임 공책",
-  "category": "교과",
-  "url": "https://steam-fraction-game.vercel.app",
-  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1788824800340.webp"
- },
- {
   "id": 53,
   "slug": "woos-program",
   "title": "해산물과 소고기의 게임 공방",
@@ -422,14 +358,6 @@
   "category": "연수",
   "url": "https://deskcat-solar-api.vercel.app",
   "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1789255397157.webp"
- },
- {
-  "id": 57,
-  "slug": "steam-triangle-game",
-  "title": "세모 게임실",
-  "category": "교과",
-  "url": "https://steam-triangle-game.vercel.app",
-  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1790824727726.webp"
  },
  {
   "id": 58,
@@ -478,14 +406,6 @@
   "category": "학급운영",
   "url": "https://nextyear.vercel.app",
   "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1792833704858.webp"
- },
- {
-  "id": 64,
-  "slug": "steam-decimal",
-  "title": "소수의 작업실",
-  "category": "교과",
-  "url": "https://steam-decimal-20261026.vercel.app",
-  "thumbnail": "https://srvrtxsfobiemugtbkkf.supabase.co/storage/v1/object/public/thumbnails/official/1793066659981.webp"
  },
  {
   "id": 65,
