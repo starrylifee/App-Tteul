@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<!-- 서울교육룰렛: 비탈을 줄지어 굴러 내려와 컵에 들어가는 구슬(신답룰렛의 비탈 끝 구슬과 구분) -->
+<path d="M24 84 L170 146" stroke="{INK}" stroke-width="20" stroke-linecap="round" fill="none"/>
+<circle cx="52" cy="64" r="20" fill="{INK}"/><circle cx="98" cy="84" r="20" fill="{INK}"/><circle cx="144" cy="104" r="20" fill="{INK}"/>
+<path d="M164 170 V196 A34 30 0 0 0 232 196 V170" stroke="{INK}" stroke-width="18" stroke-linecap="round" fill="none"/>
+<circle cx="198" cy="198" r="22" fill="{INK}"/>
+</svg>

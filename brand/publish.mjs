@@ -4,7 +4,7 @@
 //   node publish.mjs --apply             → 백업 후 실제로 올리고 바꾼다
 //   node publish.mjs --apply --only a,b  → 지정한 slug만
 //   node publish.mjs --restore out/backup-apps-….json  → 백업의 썸네일 주소로 되돌린다
-// 옛 썸네일 파일은 지우지 않는다(되돌리기용). 새 파일은 thumbnails/brand/<slug>-<날짜>.png
+// 옛 썸네일 파일은 지우지 않는다(되돌리기용). 새 파일은 thumbnails/brand/<slug>-<날짜T시각>.png
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -50,7 +50,8 @@ if (restoreFile) {
 }
 
 const apps = JSON.parse(readFileSync(join(ROOT, "apps.json"), "utf8"));
-const stamp = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+// 날짜+시각(UTC)으로 이름을 붙인다. 같은 날 다시 올려도 주소가 달라야 1년 캐시에 옛 그림이 남지 않는다
+const stamp = new Date().toISOString().replace(/[-:]/g, "").slice(0, 15); // 예: 20261105T232501
 const plan = apps
   .filter((a) => !only || only.includes(a.slug))
   .map((a) => ({ ...a, file: join(ROOT, "out", a.slug, "og-1200x630.png"), row: rows.find((r) => r.id === a.id) }));

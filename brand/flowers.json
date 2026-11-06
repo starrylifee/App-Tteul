@@ -31,7 +31,7 @@
   { "slug": "nfc-exercise-games", "icon": "barbell", "name": "역기", "petal": "F-NAVY" },
   { "slug": "steam-rules", "icon": "shapes", "name": "도형 셋", "petal": "F-NAVY" },
   { "slug": "shindap-rullet", "icon": "marble-run", "name": "비탈을 굴러 떨어지는 구슬", "petal": "F-CORAL" },
-  { "slug": "seoul-edu-rullet", "icon": "chart-donut", "name": "고리 돌림판", "petal": "F-NAVY" },
+  { "slug": "seoul-edu-rullet", "icon": "marble-ramp", "name": "비탈을 굴러 컵에 들어가는 구슬", "petal": "F-NAVY" },
   { "slug": "mycl-contest", "icon": "hammer", "name": "망치", "petal": "F-BROWN" },
   { "slug": "total-visual-art", "icon": "paint-roller", "name": "페인트 롤러", "petal": "F-CORAL" },
   { "slug": "patent-maker", "icon": "seal-check", "name": "인증 도장", "petal": "F-NAVY" },
