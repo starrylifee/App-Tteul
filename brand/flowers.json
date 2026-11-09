@@ -51,5 +51,6 @@
   { "slug": "starfinder", "icon": "star", "name": "별", "petal": "F-NAVY" },
   { "slug": "nextyear", "icon": "calendar-check", "name": "달력", "petal": "F-CORAL", "ogTitle": "학사일정" },
   { "slug": "class-bookshelf", "icon": "books", "name": "책장", "petal": "F-SKY" },
-  { "slug": "steam-club", "icon": "game-controller", "name": "게임패드", "petal": "F-CORAL" }
+  { "slug": "steam-club", "icon": "game-controller", "name": "게임패드", "petal": "F-CORAL" },
+  { "slug": "campus-micro-gp", "icon": "car-profile", "name": "자동차", "petal": "F-ROSE" }
 ]

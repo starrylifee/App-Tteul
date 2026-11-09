@@ -422,5 +422,13 @@
   "category": "교과",
   "url": "https://steam-club-2026.vercel.app/",
   "thumbnail": ""
+ },
+ {
+  "id": null,
+  "slug": "campus-micro-gp",
+  "title": "스쿨 레이싱",
+  "category": "창체",
+  "url": "https://campus-micro-gp.vercel.app",
+  "thumbnail": ""
  }
 ]
