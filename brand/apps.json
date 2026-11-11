@@ -430,5 +430,13 @@
   "category": "창체",
   "url": "https://campus-micro-gp.vercel.app",
   "thumbnail": ""
+ },
+ {
+  "id": null,
+  "slug": "pepero-online",
+  "title": "빼빼로 온라인",
+  "category": "창체",
+  "url": "https://pepero-online.vercel.app",
+  "thumbnail": ""
  }
 ]
