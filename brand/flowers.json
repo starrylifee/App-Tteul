@@ -53,5 +53,6 @@
   { "slug": "class-bookshelf", "icon": "books", "name": "책장", "petal": "F-SKY" },
   { "slug": "steam-club", "icon": "game-controller", "name": "게임패드", "petal": "F-CORAL" },
   { "slug": "campus-micro-gp", "icon": "car-profile", "name": "자동차", "petal": "F-ROSE" },
-  { "slug": "pepero-online", "icon": "gift", "name": "선물 상자", "petal": "F-CORAL" }
+  { "slug": "pepero-online", "icon": "gift", "name": "선물 상자", "petal": "F-CORAL" },
+  { "slug": "chueok-nori", "icon": "bottle-cap", "name": "병뚜껑", "petal": "F-SKY" }
 ]
