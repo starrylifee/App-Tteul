@@ -446,5 +446,13 @@
   "category": "창체",
   "url": "https://chueok-nori.vercel.app",
   "thumbnail": ""
+ },
+ {
+  "id": null,
+  "slug": "card-ten",
+  "title": "10 만들기 카드 대결",
+  "category": "교과",
+  "url": "https://game-culture-class.vercel.app/card-ten.html",
+  "thumbnail": ""
  }
 ]
